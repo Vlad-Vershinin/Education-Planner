@@ -21,8 +21,7 @@ namespace server.Persistence
         {
             modelBuilder.ApplyConfiguration(new SkillsConfiguration());
             modelBuilder.ApplyConfiguration(new CoursesConfiguration());
-            
-      //      modelBuilder.ApplyConfiguration(new ProfessionsConfigurations());
+            modelBuilder.ApplyConfiguration(new ProfessionsConfiguration());
       
             
 
