@@ -72,6 +72,11 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    <Button Content="Выйти из профиля" Padding="1" Foreground="orange">
+                        <Button.Background>
+							<SolidColorBrush Color="Red" Opacity="200"></SolidColorBrush>
+                        </Button.Background>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>

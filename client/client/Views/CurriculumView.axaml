@@ -63,7 +63,7 @@
 			<RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock  DataContext="{Binding CourseSelected}"  Text="{Binding Title}" TextWrapping="Wrap" Margin="10,10,10,0" FontSize="35" FontWeight="Bold"></TextBlock>
-        <Button Grid.Column="1" Content="Назад" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalContentAlignment="Center" VerticalAlignment="Stretch"></Button>
+        <Button Grid.Column="1" Command="{Binding GoToPreviousPage_Click}" Content="Назад" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalContentAlignment="Center" VerticalAlignment="Stretch"></Button>
         <Border Grid.ColumnSpan="2" Margin="10" Classes="Roundy" Grid.Row="1">
             <Grid>
 

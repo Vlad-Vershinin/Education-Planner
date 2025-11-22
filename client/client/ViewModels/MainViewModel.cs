@@ -20,10 +20,10 @@ public class MainViewModel : ViewModelBase
             _splitViewIsPaneOpen = value;
 
         } }
-    public UserControl FrameSelected {  get; set; }
+    [Reactive] public UserControl FrameSelected {  get; set; }
     public ProfilePageView ProfilePage { get; set; }
     public CurriculumPageView CurriculumPage { get; set; }
-    public CurriculumView Curriculum { get; set; }
+    public IndividualCurriculumPageView IndividualCurriculumPage { get; set; }
     public RegistrationPageView RegistrationPage { get; set; }
 
     public MainViewModel() 
@@ -31,23 +31,23 @@ public class MainViewModel : ViewModelBase
         ProfilePage = new ProfilePageView();
         FrameSelected = new ProfilePageView();
         CurriculumPage = new CurriculumPageView();
-        Curriculum = new CurriculumView();
+        IndividualCurriculumPage = new IndividualCurriculumPageView();
         RegistrationPage = new RegistrationPageView();
 
 
         PanSwitchCommand = ReactiveCommand.CreateFromTask(PanSwitch);
-        SwitchToPage = ReactiveCommand.CreateFromTask(switchProfilePage);
+        SwitchToProfilePage = ReactiveCommand.CreateFromTask(switchProfilePage);
         SwitchToCurriculumPage = ReactiveCommand.CreateFromTask(switchToCurriculum);
-        SwitchToCurriculumView = ReactiveCommand.CreateFromTask(switchToCurricul);
+        SwitchToIndividualCurriculumPage = ReactiveCommand.CreateFromTask(switchToIndividualCurriculum);
         SwitchToRegistratioPage = ReactiveCommand.CreateFromTask(SwitchToRegistr);
     }
 
 
 
     public ReactiveCommand<Unit, Unit> PanSwitchCommand { get; set; }
-    public ReactiveCommand<Unit, Unit>SwitchToPage { get; set; }
+    public ReactiveCommand<Unit, Unit> SwitchToProfilePage { get; set; }
     public ReactiveCommand<Unit, Unit> SwitchToCurriculumPage { get; set; }
-    public ReactiveCommand<Unit, Unit> SwitchToCurriculumView { get; set; }
+    public ReactiveCommand<Unit, Unit> SwitchToIndividualCurriculumPage { get; set; }
     public ReactiveCommand<Unit, Unit> SwitchToRegistratioPage { get; set; }
 
 
@@ -76,10 +76,9 @@ public class MainViewModel : ViewModelBase
     {
         FrameSelected = CurriculumPage;
     }
-
-    public async Task switchToCurricul()
+    public async Task switchToIndividualCurriculum()
     {
-        FrameSelected = Curriculum;
+        FrameSelected = IndividualCurriculumPage;
     }
 
     public async Task SwitchToRegistr()

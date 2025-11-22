@@ -11,6 +11,10 @@ public partial class IndividualCurriculumPageView : UserControl
     {
         InitializeComponent();
         DataContext = new IndividualCurriculumPageViewModel();
+        CourseGrid.DoubleTapped += (s, e) =>
+        {
+            (DataContext as IndividualCurriculumPageViewModel).ViewTheCourse_Click.Execute();
+        };
     }
 
 }

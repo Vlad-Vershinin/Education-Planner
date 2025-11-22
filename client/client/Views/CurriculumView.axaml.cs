@@ -11,5 +11,6 @@ public partial class CurriculumView : UserControl
     {
         InitializeComponent();
         DataContext = new CurriculumViewModel();
+
     }
 }
