@@ -8,7 +8,7 @@ namespace client.Models
 {
     public class Lesson
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public List<Article> Content { get; set; } = new List<Article>();
         public int CourseId { get; set; }

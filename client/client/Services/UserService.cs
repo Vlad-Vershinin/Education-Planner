@@ -1,4 +1,5 @@
-﻿using System;
+﻿using client.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace client.Services
 {
     public class UserService
     {
+        public User CurrentUser { get; set; }
     }
 }
