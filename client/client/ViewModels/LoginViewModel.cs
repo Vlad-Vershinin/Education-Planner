@@ -36,7 +36,7 @@ namespace client.ViewModels
             var fileNamesList = await response.Content.ReadFromJsonAsync<List<string>>();
             if (fileNamesList != null && response.IsSuccessStatusCode)
             {
-                _navigationService.NavigateTo<CurriculumPageView>();
+                _navigationService.NavigateTo<MainView>();
             }
         }
 
