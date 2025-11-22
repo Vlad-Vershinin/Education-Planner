@@ -8,6 +8,7 @@ namespace server.Domain.Models
 {
     public class LeveledSkill
     {
+        public Guid Id { get; set; }
         public Skill Skill { get; set; }
         public int Level { get; set; }
 

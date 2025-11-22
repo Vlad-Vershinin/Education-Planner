@@ -9,6 +9,7 @@ namespace server.Domain.Models
     // Используем только всех случаев, связанных с конкретным пользователем
     public class LeveledCourse
     {
+        public Guid Id { get; set; }
         public Course Course { get; set; }
         public int Level { get; set; }
         public double Progress { get; set; }

@@ -15,15 +15,6 @@ namespace server.Persistence.Configurations{
             builder
                 .HasMany(s => s.Profession)
                 .WithMany(p => p.Skills);
-
-
-            builder
-                .HasMany(s => s.Courses)
-                .WithMany(c => c.Skills);
-
-
-
-
         }
     }
 }
