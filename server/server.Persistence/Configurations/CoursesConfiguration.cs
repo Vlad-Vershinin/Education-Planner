@@ -22,7 +22,7 @@ namespace server.Persistence.Configurations{
 
             builder
                 .HasMany(c => c.Skills)
-                .WithMany(s => s.Courses);
+                .WithMany(s => s.);
         }
 
     }

@@ -15,14 +15,15 @@ namespace server.Persistence
         public DbSet<Profession>          Professions         { get; set; }
         public DbSet<LeveledSkill>        LeveledSkill        { get; set; }
         public DbSet<LeveledCourse>       LeveledCourses      { get; set; }
-
+        public DbSet<User>                User                { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new SkillsConfiguration());
             modelBuilder.ApplyConfiguration(new CoursesConfiguration());
+            
       //      modelBuilder.ApplyConfiguration(new ProfessionsConfigurations());
-      //      modelBuilder.ApplyConfiguration(new LeveledSkillsConfiguration());
+      
             
 
             // other configurations here

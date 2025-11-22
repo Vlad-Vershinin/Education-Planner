@@ -7,17 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/*namespace server.Persistence.Configurations
+namespace server.Persistence.Configurations
 {
-    public class LeveledSkillsConfiguration : IEntityTypeConfiguration<LeveledSkill>
+    public class UsersConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<LeveledSkill> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
-            
-
-
+            builder.
         }
-
     }
 }
-*/
