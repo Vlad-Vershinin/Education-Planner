@@ -1,4 +1,8 @@
 
+using server.Domain.Interfaces.Services;
+using server.Domain.Interfaces.Repositories;
+using server.Application.Services;
+using server.Infrastucture.Repositories;
 
 using Microsoft.EntityFrameworkCore;
 using server.Persistence;
@@ -10,6 +14,8 @@ namespace server.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddTransient<IUserService, UserService>();
 
             builder.Services.AddControllers();
 

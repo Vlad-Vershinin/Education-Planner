@@ -11,6 +11,9 @@ namespace server.Persistence.Configurations{
 
             builder.HasKey(x => x.Id);
 
+            builder
+                .HasMany(s => s.Profession)
+                .WithMany(p => p.Skills);
 
             builder
                 .HasMany(s => s.Profession)

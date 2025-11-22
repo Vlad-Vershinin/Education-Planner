@@ -13,16 +13,16 @@ namespace server.Persistence
         public DbSet<Skill>               Skills              { get; set; }
         public DbSet<Course>              Courses             { get; set; }
         public DbSet<Profession>          Professions         { get; set; }
-        public DbSet<LeveledSkill>        LeveledSkill        { get; set; }
+        public DbSet<LeveledCourse>        LeveledSkill        { get; set; }
         public DbSet<LeveledCourse>       LeveledCourses      { get; set; }
-
+        public DbSet<User>                User                { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new SkillsConfiguration());
             modelBuilder.ApplyConfiguration(new CoursesConfiguration());
-      //      modelBuilder.ApplyConfiguration(new ProfessionsConfigurations());
-      //      modelBuilder.ApplyConfiguration(new LeveledSkillsConfiguration());
+            modelBuilder.ApplyConfiguration(new ProfessionsConfiguration());
+      
             
 
             // other configurations here
