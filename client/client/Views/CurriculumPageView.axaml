@@ -6,44 +6,64 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:client.ViewModels"
              x:Class="client.Views.CurriculumPageView"
-             x:DataType="vm:CurriculumPageViewModel">
+             x:DataType="vm:CurriculumPageViewModel"
+             xmlns:converter="clr-namespace:client.Models.Convertors">
+
+    <UserControl.Resources>
+        <converter:ImportanceColorConvertor x:Key="ICConverter"/>
+        <converter:ImportanceTextConveror x:Key="ITConverter"/>
+    </UserControl.Resources>
 
     <Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="auto"></RowDefinition>
-			<RowDefinition ></RowDefinition>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-			<ColumnDefinition Width="auto"></ColumnDefinition>
-			<ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Border Classes="Roundy" Margin="5,5,5,0">
             <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="10" VerticalAlignment="Stretch">
-                    <TextBlock VerticalAlignment="Center" Text="Curriculums available" FontSize="25" FontWeight="Bold" LetterSpacing="1"></TextBlock>
+                    <TextBlock VerticalAlignment="Center" Text="Курсы" FontSize="25" FontWeight="Bold" LetterSpacing="1"></TextBlock>
                 </StackPanel>
             </ScrollViewer>
         </Border>
         <Border Grid.Column="1" Classes="Roundy" Margin="0,5,5,0">
             <Grid>
                 <Grid.ColumnDefinitions>
-					<ColumnDefinition Width="auto"></ColumnDefinition>
-					<ColumnDefinition></ColumnDefinition>
-					<ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                     
-                <Button Content="Filter"></Button>
+                <Button Content="Фильтр"></Button>
                 <TextBox BorderThickness="0" Margin="5,0,5,0" Grid.Column="1" CornerRadius="10" Background="{StaticResource TransparentBlack}"></TextBox>
-                <Button Grid.Column="2" Content="Search"></Button>
+                <Button Grid.Column="2" Content="Поиск"></Button>
                 
             </Grid>
              
         </Border>
-        <Border Grid.ColumnSpan="2"  Classes="Roundy" Margin="5" Grid.Row="1">
-            <ListBox Background="transparent"></ListBox>
+        <Border Grid.ColumnSpan="2" Classes="Roundy" Margin="5" Grid.Row="1">
+            <DataGrid ItemsSource="{Binding Values}" CanUserResizeColumns="True" CanUserReorderColumns="False" Background="{StaticResource TransparentBlack}" CornerRadius="20">
+                <DataGrid.ColumnHeaderTheme>
+					
+                </DataGrid.ColumnHeaderTheme>
+                <DataGrid.Columns>
+					<DataGridTemplateColumn Width="0.5*" Header="Важность курса">
+                        <DataTemplate>
+							<TextBlock Text="{Binding CurriculumImportance, Converter={StaticResource ITConverter}}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding Title}" Width="0.5*" Header="Название курса"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Description}" Width="1.5*" Header="Описание курса"></DataGridTextColumn>
+                    <DataGridTemplateColumn Width="0.5*" Header="Записаться на курс"></DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </Border>
     </Grid>
 

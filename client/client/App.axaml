@@ -24,6 +24,10 @@
     
 
     <Application.Styles>
+		<StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"></StyleInclude>
+        <Style Selector="DataGridColumnHeader">
+            <Setter Property="Background" Value="{StaticResource TransparentBlack}"></Setter>
+        </Style>
         <FluentTheme />
         <Style Selector="TextBlock">
             <Setter Property="FontSize" Value="20"></Setter>
