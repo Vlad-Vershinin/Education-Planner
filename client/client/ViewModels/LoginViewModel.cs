@@ -7,6 +7,9 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using ReactiveUI.Fody;
+using ReactiveUI.Fody.Helpers;
+using client.Views;
 
 namespace client.ViewModels
 {
@@ -24,13 +27,13 @@ namespace client.ViewModels
         [Reactive] public string Login { get; set; } = string.Empty;
         [Reactive] public string Password { get; set; } = string.Empty;
 
-        private async Task Login()
+        private async Task TryLogin()
         {
             var response = await _httpClientService.HttpClient.GetAsync($"id/{Login}/{Password}");
             var fileNamesList = await response.Content.ReadFromJsonAsync<List<string>>();
             if (fileNamesList != null && response.IsSuccessStatusCode)
             {
-                _navigationService.NavigateTo<CurriculumPageViewModel>();
+                _navigationService.NavigateTo<CurriculumPageView>();
             }
         }
     }
