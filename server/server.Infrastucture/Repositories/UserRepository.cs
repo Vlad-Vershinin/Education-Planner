@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
 using server.Persistence;
 using server.Domain.Models;
-using System.Runtime.Intrinsics.X86;
+
 using server.Domain.Interfaces.Repositories;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
-using System.Reflection.Metadata.Ecma335;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
+
 
 namespace server.Infrastucture.Repositories
 {
