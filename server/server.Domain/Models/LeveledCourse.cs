@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 namespace server.Domain.Models
 {
     // Используем только всех случаев, связанных с конкретным пользователем
-    public class CourseExtended
+    public class LeveledCourse
     {
         public Course Course { get; set; }
         public int Level { get; set; }
         public double Progress { get; set; }
 
-        public CourseExtended() { }
+        public LeveledCourse() { }
 
-        public CourseExtended(Course course, int level, double progress)
+        public LeveledCourse(Course course, int level, double progress)
         {
             Course = course;
             Level = level;
