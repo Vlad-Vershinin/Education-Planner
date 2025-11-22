@@ -1,0 +1,104 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="client.Views.CurriculumView"
+             xmlns:vm ="clr-namespace:client.ViewModels" x:DataType="vm:CurriculumPageViewModel"
+             xmlns:converter="clr-namespace:client.Models.Convertors">
+  
+    <UserControl.Resources>
+		<converter:RotateBoolToAngleConverter x:Key="RotateBoolToAngleConverter"/>
+    </UserControl.Resources>
+
+    <UserControl.Styles>
+		<Style Selector="Expander">
+          <Setter Property="Background" Value="Transparent" />
+  <Setter Property="BorderBrush" Value="Transparent" />
+  <Setter Property="BorderThickness" Value="0" />
+  <Setter Property="Padding" Value="0" />
+  <Setter Property="Template">
+    <ControlTemplate>
+      <Border Background="{TemplateBinding Background}"
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}">
+        <DockPanel>
+          <!-- Header -->
+          <ToggleButton Name="PART_toggle"
+                        DockPanel.Dock="Top"
+                        Background="{StaticResource TransparentBlack}"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+
+                        Padding="10,5,10,5"
+                        CornerRadius="15,15,0,0">
+            <ContentPresenter Content="{TemplateBinding Header}"
+                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                              Margin="0" />
+          </ToggleButton>
+
+          <!-- Content -->
+          <ContentPresenter Name="PART_content"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            IsVisible="{Binding #PART_toggle.IsChecked}"
+                            Background="{StaticResource TransparentBlack}"
+                            Margin="0"
+                            HorizontalAlignment="Stretch"
+                            Padding="10,5,10,5" CornerRadius="0,15,15,15"/>
+        </DockPanel>
+      </Border>
+    </ControlTemplate>
+  </Setter>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Название курса" Margin="10,10,10,0" FontSize="35" FontWeight="Bold"></TextBlock>
+        <Button Grid.Column="1" Content="Назад" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Bottom"></Button>
+        <Border Grid.ColumnSpan="2" Margin="10" Classes="Roundy" Grid.Row="1">
+            <Grid>
+
+                <Grid.RowDefinitions>
+					<RowDefinition></RowDefinition>
+					<RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+				
+                <ScrollViewer Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+                    <StackPanel Spacing="20">
+                        <Expander Header="Описание" HorizontalAlignment="Stretch">
+                            <TextBlock Text="Описание курса"></TextBlock>
+                        </Expander>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Время обучения: "></TextBlock>
+                            <TextBlock Text="Время"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Организация: "></TextBlock>
+                            <TextBlock Text="Название"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Цена: "></TextBlock>
+                            <TextBlock Text="Цена"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <Button Content="Включить курс" Grid.Row="1" Grid.Column="1"></Button>
+            </Grid>
+        </Border>
+    </Grid>
+
+</UserControl>

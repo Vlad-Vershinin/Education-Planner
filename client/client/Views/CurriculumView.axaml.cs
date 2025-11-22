@@ -5,11 +5,11 @@ using client.ViewModels;
 
 namespace client.Views;
 
-public partial class CurriculumPageView : UserControl
+public partial class CurriculumView : UserControl
 {
-    public CurriculumPageView()
+    public CurriculumView()
     {
         InitializeComponent();
-        DataContext = new CurriculumPageViewModel();
+        DataContext = new CurriculumViewModel();
     }
 }
