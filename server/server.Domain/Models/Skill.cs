@@ -8,7 +8,7 @@ namespace server.Domain.Models
 {
     public class Skill
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int X { get; set; }
@@ -19,11 +19,9 @@ namespace server.Domain.Models
         public List<Profession> Profession { get; set; }
         public List<Course> Courses { get; set; }
 
-        public Skill()
-        {
-        }
+        public Skill() { }
 
-        public Skill(int id, string name, string description, int x, int y, int z)
+        public Skill(Guid id, string name, string description, int x, int y, int z)
         {
             Id = id;
             Name = name;
