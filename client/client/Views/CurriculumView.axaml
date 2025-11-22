@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="client.Views.CurriculumView"
-             xmlns:vm ="clr-namespace:client.ViewModels" x:DataType="vm:CurriculumPageViewModel"
+             xmlns:vm ="clr-namespace:client.ViewModels" x:DataType="vm:CurriculumViewModel"
              xmlns:converter="clr-namespace:client.Models.Convertors">
   
     <UserControl.Resources>
@@ -62,7 +62,7 @@
 			<RowDefinition Height="auto"></RowDefinition>
 			<RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Название курса" TextWrapping="Wrap" Margin="10,10,10,0" FontSize="35" FontWeight="Bold"></TextBlock>
+        <TextBlock  DataContext="{Binding CourseSelected}"  Text="{Binding Title}" TextWrapping="Wrap" Margin="10,10,10,0" FontSize="35" FontWeight="Bold"></TextBlock>
         <Button Grid.Column="1" Content="Назад" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalContentAlignment="Center" VerticalAlignment="Stretch"></Button>
         <Border Grid.ColumnSpan="2" Margin="10" Classes="Roundy" Grid.Row="1">
             <Grid>
@@ -79,10 +79,10 @@
                 <ScrollViewer Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
                     <StackPanel Spacing="20">
                         <Expander Header="Описание" HorizontalAlignment="Stretch">
-                            <TextBlock Text="Описание курса" TextWrapping="Wrap"></TextBlock>
+                            <TextBlock  DataContext="{Binding CourseSelected}"  Text="{Binding Description}" TextWrapping="Wrap"></TextBlock>
                         </Expander>
                         <Expander Header="Навыки, которые вы получите" HorizontalAlignment="Stretch">
-                            <ListBox HorizontalAlignment="Stretch">
+                            <ListBox DataContext="{Binding CourseSelected}" HorizontalAlignment="Stretch">
 								<ListBox.ItemTemplate>
 									<DataTemplate>
                                         <Grid>
@@ -93,8 +93,8 @@
                             </ListBox>
                         </Expander>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Время обучения: "></TextBlock>
-                            <TextBlock Text="Время"></TextBlock>
+                            <TextBlock Text="Время обучения (часы): "></TextBlock>
+                            <TextBlock DataContext="{Binding CourseSelected}" Text="{Binding Hours}"></TextBlock>
                         </StackPanel>
                         
                     </StackPanel>

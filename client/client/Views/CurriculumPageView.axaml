@@ -54,11 +54,6 @@
 					
                 </DataGrid.ColumnHeaderTheme>
                 <DataGrid.Columns>
-					<DataGridTemplateColumn Width="auto" Header="Важность курса">
-                        <DataTemplate>
-							<TextBlock Text="{Binding CurriculumImportance, Converter={StaticResource ITConverter}}" Foreground="{Binding CurriculumImportance, Converter={StaticResource ICConverter}}"></TextBlock>
-                        </DataTemplate>
-                    </DataGridTemplateColumn>
                     <DataGridTextColumn Binding="{Binding Title}" Width="auto" Header="Название курса"/>
                     <DataGridTextColumn Binding="{Binding Description}" Width="1.5*" Header="Описание курса"/>
                     <DataGridTemplateColumn Width="auto" Header="Включить курс">

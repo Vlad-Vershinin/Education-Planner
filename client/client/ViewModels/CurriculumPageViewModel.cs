@@ -18,15 +18,12 @@ namespace client.ViewModels
 
         public string SearchText { get; set; } = string.Empty;
 
-        public ObservableCollection<Curriculum> Values { get; set;} 
+        public ObservableCollection<Course> Values { get; set;} 
         public CurriculumPageViewModel() 
         { 
-            Values = new ObservableCollection<Curriculum> {
+            Values = new ObservableCollection<Course> {
 
-            new Curriculum{Title = "Титле", CurriculumImportance = CurriculumImportance.NECESSARY},
-            new Curriculum{Title = "Титле", CurriculumImportance = CurriculumImportance.IMPORTANT},
-            new Curriculum{Title = "Титле", CurriculumImportance = CurriculumImportance.CIRCUMSTANTIAL},
-            new Curriculum{Title = "Титле", CurriculumImportance = CurriculumImportance.NOT_IMPORTANT}
+            new Course{Title = "Титле"}
             };
         }
 

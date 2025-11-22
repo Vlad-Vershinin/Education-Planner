@@ -1,4 +1,5 @@
-﻿using System;
+﻿using client.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace client.ViewModels
 {
     public class CurriculumViewModel : ViewModelBase
     {
-
+        public Course CourseSelected {  get; set; }
     }
 }
