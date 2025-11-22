@@ -8,21 +8,11 @@
         x:Class="client.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="client">
-    <Window.Background>
-        <LinearGradientBrush>
-            <GradientStop Color="#00505c" Offset="0.1"></GradientStop>
-            <GradientStop Color="#005e6b" Offset="0.5"></GradientStop>
-            <GradientStop Color="#008439" Offset="0.9"></GradientStop>
-        </LinearGradientBrush>
-    </Window.Background>
-    <Window.Styles>
-		<Style Selector="TextBlock">
-            <Setter Property="FontSize" Value="20"></Setter>
-        </Style>
-		<Style Selector="TextBox">
-            <Setter Property="FontSize" Value="20"></Setter>
-        </Style>
-    </Window.Styles>
+    
+
+    
+
+    
     <views:ProfilePageView/>
     
     

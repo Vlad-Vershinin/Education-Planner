@@ -4,12 +4,40 @@
              x:Class="client.App"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    
+             
 
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
 
+    <Application.Resources>
+		<SolidColorBrush x:Key="MyBackgroundColor" Color="Black" Opacity="150"/>
+        <LinearGradientBrush x:Key="AppMainBG">
+            <GradientStop Color="#00505c" Offset="0.1"></GradientStop>
+            <GradientStop Color="#005e6b" Offset="0.5"></GradientStop>
+            <GradientStop Color="#008439" Offset="0.9"></GradientStop>
+        </LinearGradientBrush>
+    </Application.Resources>
+
+
+    
+
     <Application.Styles>
         <FluentTheme />
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+		<Style Selector="Border.Roundy">
+            <Setter Property="CornerRadius" Value="15"></Setter>
+            <Setter Property="Padding" Value="10"></Setter>
+            <Setter Property="Background" Value="{StaticResource MyBackgroundColor}"></Setter>
+        </Style>
+        <Style Selector="Window">
+			<Setter Property="Background" Value="{StaticResource AppMainBG}"></Setter>
+        </Style>
     </Application.Styles>
 </Application>

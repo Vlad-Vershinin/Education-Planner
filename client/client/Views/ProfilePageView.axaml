@@ -17,10 +17,7 @@
         </Grid.RowDefinitions>
 
         
-			<Border CornerRadius="15" Padding="10" MinHeight="20" Margin="5"  >
-                <Border.Background>
-					<SolidColorBrush Color="Black" Opacity="150"></SolidColorBrush>
-                </Border.Background>
+			<Border Classes="Roundy" Margin="5">
                 <TextBlock Text="{Binding TestText}"></TextBlock>
             </Border>
         
