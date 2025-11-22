@@ -1,0 +1,15 @@
+﻿using client.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace client.Services.Interfaces
+{
+    public interface IUserServece
+    {
+        public User CurrentUser { get; set; }
+
+    }
+}
