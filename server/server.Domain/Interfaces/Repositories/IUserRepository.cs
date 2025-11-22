@@ -10,7 +10,7 @@ namespace server.Domain.Interfaces.Repositories
     public interface IUserRepository
     {
         Task<List<User>> GetAllUsers();
-        Task<User> GetUserById(string id);
+        Task<User> GetUserById(int id);
         Task<User> GetUserByLogin(string login);
     }
 }
