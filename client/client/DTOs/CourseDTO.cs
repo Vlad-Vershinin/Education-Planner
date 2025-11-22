@@ -33,7 +33,7 @@ namespace client.DTOs
         {
             return new CourseDTO
             {
-                Id = Id,
+                Id = model.Id,
                 Name = model.Title ?? string.Empty,
                 Description = model.Description ?? string.Empty,
                 Skills = new List<SkillDTO>(),

@@ -7,8 +7,7 @@ using client.ViewModels;
 using client.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Security.Authentication.ExtendedProtection;
+
 
 namespace client;
 
@@ -20,30 +19,24 @@ public partial class App : Application
 
     public override void Initialize()
     {
-        AvaloniaXamlLoader.Load(this);
+        Avalonia.Markup.Xaml.AvaloniaXamlLoader.Load(this);
+        
     }
 
     public override void OnFrameworkInitializationCompleted()
     {
+
         var services = new ServiceCollection();
         services.AddSingleton<INavigationService, NavigationService>();
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainViewModel()
-            };
+            desktop.MainWindow = new MainWindow();
         }
-        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-        {
-            singleViewPlatform.MainView = new MainView
-            {
-                DataContext = new MainViewModel()
-            };
-        }
+        
 
         base.OnFrameworkInitializationCompleted();
+        
     }
 
 }

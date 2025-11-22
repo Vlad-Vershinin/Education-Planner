@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:client.ViewModels"
+             xmlns:local="using:client.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="client.Views.ProfilePageView" 
+             x:DataType="vm:ProfilePageViewModel">
+    <Grid>
+        <Grid.RowDefinitions>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Classes="Roundy" Margin="10,10,10,0">
+            <Grid>
+				<Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>
+
+
+                <StackPanel>
+                    <TextBlock Text="Name"></TextBlock>
+                    <TextBlock Text="Description"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border Classes="Roundy" Margin="10" Grid.Row="1">
+        </Border>
+
+    </Grid>
+</UserControl>
