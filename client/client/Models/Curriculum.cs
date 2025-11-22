@@ -15,7 +15,6 @@ namespace client.Models
         public int Id { get; set; } = 0;
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public CurriculumImportance CurriculumImportance { get; set; }
         public float CompletionPercentage { get; set; }
 
         public void SetOpenTheCurriculumDelegate(OpenTheCurriculumDelegate openTheCurriculumDelegate) { _openTheCurriculum = openTheCurriculumDelegate; }

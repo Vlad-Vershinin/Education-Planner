@@ -62,8 +62,8 @@
 			<RowDefinition Height="auto"></RowDefinition>
 			<RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Название курса" Margin="10,10,10,0" FontSize="35" FontWeight="Bold"></TextBlock>
-        <Button Grid.Column="1" Content="Назад" HorizontalAlignment="Right" Margin="10,0,10,0" VerticalAlignment="Bottom"></Button>
+        <TextBlock Text="Название курса" TextWrapping="Wrap" Margin="10,10,10,0" FontSize="35" FontWeight="Bold"></TextBlock>
+        <Button Grid.Column="1" Content="Назад" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalContentAlignment="Center" VerticalAlignment="Stretch"></Button>
         <Border Grid.ColumnSpan="2" Margin="10" Classes="Roundy" Grid.Row="1">
             <Grid>
 
@@ -79,7 +79,7 @@
                 <ScrollViewer Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
                     <StackPanel Spacing="20">
                         <Expander Header="Описание" HorizontalAlignment="Stretch">
-                            <TextBlock Text="Описание курса"></TextBlock>
+                            <TextBlock Text="Описание курса" TextWrapping="Wrap"></TextBlock>
                         </Expander>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Время обучения: "></TextBlock>
