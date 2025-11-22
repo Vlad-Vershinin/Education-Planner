@@ -44,6 +44,7 @@ namespace server.Infrastucture.Repositories
             return await _context.User.FindAsync(login);
         }
 
+        public async Task<List<LeveledSkill>> GetUserSkills(int id)
     }
     
 }
