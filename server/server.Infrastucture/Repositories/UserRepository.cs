@@ -11,6 +11,8 @@ using System.Runtime.Intrinsics.X86;
 using server.Domain.Interfaces.Repositories;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using System.Reflection.Metadata.Ecma335;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 
 namespace server.Infrastucture.Repositories
 {
@@ -48,21 +50,35 @@ namespace server.Infrastucture.Repositories
         {
             return _context.User.FindAsync(id).Result.SkillsHave;
         }
-        Task<List<CourseTaken>> GetUserCourses(int id)
+        public async Task<List<CourseTaken>> GetUserCourses(int id)
         {
-
+            return _context.User.FindAsync(id).Result.CoursesTaken;
         }
-        Task<Profession> GetUserProfession(int id)
+        public async Task<Profession> GetUserProfession(int id)
         {
-
+            return _context.User.FindAsync(id).Result.ProfessionChosen;
         }
-        Task UpdateUserSkills(List<LeveledSkill> skills)
+        public async Task UpdateUserSkills(int user_id, List<LeveledSkill> skills)
         {
-
+            
+            for (int i = 0; i < skills.Count; i++) {
+                var skill = skills[i];
+                if(_context.User.FindAsync(user_id).Result.SkillsHave.ElementAt(i).Level == skill.Level)
+                {
+                   if( _context.User.FindAsync(user_id).Result.SkillsHave.ElementAt(i).Level < skill.Level)
+                    {
+                        _context.User.FindAsync(user_id).Result.SkillsHave.ElementAt(i).Level = skill.Level;
+                    }
+                        
+                }
+                else {
+                    _context.User.FindAsync(user_id).Result.SkillsHave.Append(skill);
+                }
+            }
         }
-        Task UpdateUserCourseProgress(int user_id, double progress)
+        public async Task UpdateUserCourseProgress(int user_id, int course_id, double progress)
         {
-
+            _context.User.FindAsync(user_id).Result.CoursesTaken.ElementAt(course_id).Progress = progress;
         }
 
     }
