@@ -26,15 +26,22 @@ namespace client.ViewModels
 
         [Reactive] public string Login { get; set; } = string.Empty;
         [Reactive] public string Password { get; set; } = string.Empty;
+        [Reactive] public Guid Id { get; set; }
 
         private async Task TryLogin()
         {
-            var response = await _httpClientService.HttpClient.GetAsync($"id/{Login}/{Password}");
+            var response = await _httpClientService.HttpClient.GetAsync($"auth/{Login}/{Password}");
             var fileNamesList = await response.Content.ReadFromJsonAsync<List<string>>();
             if (fileNamesList != null && response.IsSuccessStatusCode)
             {
                 _navigationService.NavigateTo<CurriculumPageView>();
             }
+        }
+
+        private async Task GetUserId()
+        {
+            var response = await _httpClientService.HttpClient.GetAsync($"user/{Id}");
+            var fileNamesList = await response.Content.ReadFromJsonAsync<List<Guid>>();
         }
     }
 }
