@@ -13,7 +13,7 @@
     
 
     
-    <views:CurriculumView/>
+    <views:CurriculumPageView/>
     
     
 </Window>
