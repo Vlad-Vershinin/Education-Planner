@@ -15,11 +15,9 @@ namespace server.Domain.Models
         public List<Course> Courses { get; set; }
         public List<Skill> Skills { get; set; }
 
-        public Profession()
-        {
-        }
+        public Profession() { }
 
-        public Profession(int id, string name, string description, double relevance)
+        public Profession(Guid id, string name, string description, double relevance)
         {
             Id = id;
             Name = name;
