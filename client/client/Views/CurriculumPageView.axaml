@@ -1,18 +1,53 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="using:client.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:client.ViewModels"
-             x:DataType="vm:CurriculumPageViewModel"
-             x:Class="client.Views.CurriculumPageView">
-        
+             x:Class="client.Views.CurriculumPageView"
+             x:DataType="vm:CurriculumPageViewModel">
 
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+			<ColumnDefinition Width="auto"></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
+        <Border Classes="Roundy" Margin="5,5,5,0">
+            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="10" VerticalAlignment="Stretch">
+                    <TextBlock VerticalAlignment="Center" Text="Curriculums available" FontSize="25" FontWeight="Bold" LetterSpacing="1"></TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+        <Border Grid.Column="1" Classes="Roundy" Margin="0,5,5,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto"></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
+                    
+                <Button Content="Filter"></Button>
+                <TextBox BorderThickness="0" Margin="5,0,5,0" Grid.Column="1" CornerRadius="10" Background="{StaticResource TransparentBlack}"></TextBox>
+                <Button Grid.Column="2" Content="Search"></Button>
+                
+            </Grid>
+             
+        </Border>
+        <Border Grid.ColumnSpan="2"  Classes="Roundy" Margin="5" Grid.Row="1">
+            <ListBox Background="transparent"></ListBox>
+        </Border>
+    </Grid>
 
-
+    
 
 
 </UserControl>

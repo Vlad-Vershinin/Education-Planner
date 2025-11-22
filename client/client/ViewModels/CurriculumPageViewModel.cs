@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace client.ViewModels
 {
-    internal class CurriculumPageViewModel
+    public class CurriculumPageViewModel : ViewModelBase
     {
+        public string BTN_FilterName { get { return "Фильтр"; } }
+        public string TXT { get; set; } = "Курсы";
+        public string BTN_Search { get; set; } = "Поиск";
     }
 }

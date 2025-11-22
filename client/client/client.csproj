@@ -23,8 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\CurriculumPageView.axaml.cs">
-      <DependentUpon>CurriculumPageView.axaml</DependentUpon>
-    </Compile>
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>
