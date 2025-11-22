@@ -26,16 +26,16 @@ namespace server.Infrastucture.Repositories
             return await _context.User.ToListAsync();
         }
 
-        public async Task<bool> UserExist(int id)
+        public async Task<bool> UserExist(Guid id)
         {
-            return await _context.User.FindAsync(id) != null ? true : false;
+            return await _context.User.AnyAsync(us => us.Id == id);
         }
         public async Task<bool> UserExist(string login)
         {
-            return await _context.User.FindAsync(login) != null ? true : false;
+            return await _context.User.AnyAsync(us => us.Login == login);
         }
 
-        public async Task<User> GetUserById(int id)
+        public async Task<User> GetUserById(Guid id)
         {
             return await _context.User.FindAsync(id);
         }
