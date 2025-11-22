@@ -13,7 +13,7 @@ namespace server.Domain.Models
         public string Password { get; set; }
         public string Fullname { get; set; }
         public Profession ProfessionChosen { get; set; }
-        public List<CourseExtended> CoursesTaken { get; set; }
+        public List<LeveledCourse> CoursesTaken { get; set; }
         public List<LeveledSkill> SkillsHave { get; set; }
 
         public User() { }

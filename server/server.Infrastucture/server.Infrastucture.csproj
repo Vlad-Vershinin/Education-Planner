@@ -12,4 +12,8 @@
     <ProjectReference Include="..\server.Persistence\server.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Configurations\" />
+  </ItemGroup>
+
 </Project>
