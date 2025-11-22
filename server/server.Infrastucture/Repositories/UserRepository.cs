@@ -45,6 +45,26 @@ namespace server.Infrastucture.Repositories
         }
 
         public async Task<List<LeveledSkill>> GetUserSkills(int id)
+        {
+            return _context.User.FindAsync(id).Result.SkillsHave;
+        }
+        Task<List<CourseTaken>> GetUserCourses(int id)
+        {
+
+        }
+        Task<Profession> GetUserProfession(int id)
+        {
+
+        }
+        Task UpdateUserSkills(List<LeveledSkill> skills)
+        {
+
+        }
+        Task UpdateUserCourseProgress(int user_id, double progress)
+        {
+
+        }
+
     }
     
 }
