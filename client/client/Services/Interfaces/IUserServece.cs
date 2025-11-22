@@ -10,5 +10,6 @@ namespace client.Services.Interfaces
     public interface IUserServece
     {
         public User CurrentUser { get; set; }
+
     }
 }

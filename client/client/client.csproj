@@ -27,8 +27,4 @@
 	<PropertyGroup>
 		<CodePage>65001</CodePage>
 	</PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="DTOs\" />
-  </ItemGroup>
 </Project>
