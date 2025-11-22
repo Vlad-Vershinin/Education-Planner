@@ -27,12 +27,15 @@ namespace client.Models.Convertors
                 {
                     return "Опционален";
                 }
-                else if (cr == CurriculumImportance.NOT_IMPORTANT)
+                else
                 {
                     return "Не важен";
                 }
             }
-            throw new NotImplementedException();
+            else
+            {
+                return "-";
+            }
         }
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

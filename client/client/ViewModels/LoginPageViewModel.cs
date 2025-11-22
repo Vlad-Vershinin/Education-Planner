@@ -10,5 +10,6 @@ namespace client.ViewModels
     {
         public string Login {  get; set; }
         public string Password { get; set; }
+        public string Warning { get; set; } // Сообщения для вывода под полями пароля и логина (аля Введен неверный логин или пароль)
     }
 }

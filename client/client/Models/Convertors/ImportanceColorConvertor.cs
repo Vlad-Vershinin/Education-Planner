@@ -19,7 +19,8 @@ namespace client.Models.Convertors
                 if (cr == CurriculumImportance.NECESSARY)
                 {
                     return Color.Red;
-                }else if (cr == CurriculumImportance.IMPORTANT)
+                }
+                else if (cr == CurriculumImportance.IMPORTANT)
                 {
                     return Color.Yellow;
                 }
@@ -27,12 +28,15 @@ namespace client.Models.Convertors
                 {
                     return Color.White;
                 }
-                else if (cr == CurriculumImportance.NOT_IMPORTANT)
+                else
                 {
                     return Color.Gray;
                 }
             }
-            throw new NotImplementedException();
+            else
+            {
+                return Color.White;
+            }
         }
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
