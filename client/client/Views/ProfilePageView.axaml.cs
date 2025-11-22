@@ -11,5 +11,11 @@ public partial class ProfilePageView : UserControl
     {
         InitializeComponent();
         DataContext = new ProfilePageViewModel();
+        EnrolledCourses_GUI.DoubleTapped += (s,e) => 
+        {
+            (DataContext as ProfilePageViewModel).ViewTheCourse_Click.Execute();
+        };
     }
+
+    
 }

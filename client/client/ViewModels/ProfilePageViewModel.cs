@@ -15,12 +15,24 @@ namespace client.ViewModels
 {
     public class ProfilePageViewModel : ViewModelBase
     {
+
+        [Reactive] public bool IsViewingTheCourse { get; set; } = false;
+
+        public CurriculumView SelectedCoursePage { get; set; }
+        public int SelectedCourseID { get; set; }
+
+
         public ReactiveCommand<Unit,Unit> LogOut_Click { get; set; }
 
         private readonly INavigationService _navigationService;
 
         public User CurrentUser {  get; set; }
-        [Reactive] public List<Course> EnrolledCourses { get; set; } 
+        [Reactive] public List<Course> EnrolledCourses { get; set; }
+        [Reactive] public Course CurrentCourse { get; set; }
+
+
+        public ReactiveCommand<Unit, Unit> ViewTheCourse_Click { get; set; }
+
 
         public ProfilePageViewModel()
         {
@@ -46,6 +58,10 @@ namespace client.ViewModels
 
 
             LogOut_Click = ReactiveCommand.CreateFromTask(LogOut);
+
+            SelectedCoursePage = new CurriculumView();
+            (SelectedCoursePage.DataContext as CurriculumViewModel).SetDelegate(BackToDataGrid);
+            ViewTheCourse_Click = ReactiveCommand.CreateFromTask(ViewTheCourse);
         }
 
         public void SetUser(User user)
@@ -60,6 +76,17 @@ namespace client.ViewModels
             _navigationService.NavigateTo<LoginPageView>();
         }
 
+
+
+        public async Task ViewTheCourse()
+        {
+            (SelectedCoursePage.DataContext as CurriculumViewModel).CourseSelected = EnrolledCourses[SelectedCourseID];
+            IsViewingTheCourse = true;
+        }
+        public void BackToDataGrid()
+        {
+            IsViewingTheCourse = false;
+        }
 
 
     }
