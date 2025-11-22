@@ -21,5 +21,12 @@ namespace server.Domain.DTOs
             Login = login;
             Fullname = fullname;
         }
+
+        public UserDto(User user)
+        {
+            Id = user.Id;
+            Login = user.Login;
+            Fullname = user.Fullname;
+        }
     }
 }

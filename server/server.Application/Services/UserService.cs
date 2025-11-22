@@ -17,9 +17,12 @@ namespace server.Application.Services
 
         public async Task<UserDto> AuthorizeAsync(string login, string password)
         {
-            User user = await _userRepository.GetUserByLogin(login);
-            UserDto dto = new UserDto();
-            return dto;
+            return new UserDto(await _userRepository.GetUserByLogin(login));
+        }
+
+        public async Task<UserDto> GetUserAsync(int id)
+        {
+            return new UserDto(await _userRepository.GetUserById(id));
         }
     }
 }
