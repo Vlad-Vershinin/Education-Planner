@@ -81,18 +81,22 @@
                         <Expander Header="Описание" HorizontalAlignment="Stretch">
                             <TextBlock Text="Описание курса" TextWrapping="Wrap"></TextBlock>
                         </Expander>
+                        <Expander Header="Навыки, которые вы получите" HorizontalAlignment="Stretch">
+                            <ListBox HorizontalAlignment="Stretch">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+                                        <Grid>
+											
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Expander>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Время обучения: "></TextBlock>
                             <TextBlock Text="Время"></TextBlock>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Организация: "></TextBlock>
-                            <TextBlock Text="Название"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Цена: "></TextBlock>
-                            <TextBlock Text="Цена"></TextBlock>
-                        </StackPanel>
+                        
                     </StackPanel>
                 </ScrollViewer>
 
