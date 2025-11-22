@@ -2,16 +2,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="using:client.Models"
              xmlns:vm="clr-namespace:client.ViewModels"
              xmlns:local="using:client.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="client.Views.ProfilePageView" 
-             x:DataType="vm:ProfilePageViewModel">
+             x:DataType="vm:ProfilePageViewModel"
+             xmlns:converters="clr-namespace:client.Models.Convertors">
+    <UserControl.Resources>
+		<converters:PercentsToTextConverter x:Key="PTTConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
 			<RowDefinition Height="auto"></RowDefinition>
 			<RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
         <Border Classes="Roundy" Margin="10,10,10,0">
             <Grid>
@@ -19,13 +28,52 @@
                 </Grid.ColumnDefinitions>
 
 
-                <StackPanel>
-                    <TextBlock Text="Name"></TextBlock>
-                    <TextBlock Text="Description"></TextBlock>
+                <StackPanel Spacing="10">
+                    <TextBlock FontSize="25" Text="Профиль пользователя" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock FontSize="35" FontWeight="Bold" DataContext="{Binding CurrentUser}" Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
                 </StackPanel>
             </Grid>
         </Border>
-        <Border Classes="Roundy" Margin="10" Grid.Row="1">
+        <Button Grid.Column="2" Margin="0,10,10,0" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Content="Выйти" IsVisible="False"></Button>
+        <Border Classes="Roundy" Margin="10" Grid.Row="1" Grid.ColumnSpan="3">
+            <Grid>
+				<StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Логин: "></TextBlock>
+                        <TextBlock DataContext="{Binding CurrentUser}" Text="{Binding Login}"></TextBlock>
+                    </StackPanel>
+
+                    <ListBox ItemsSource="{Binding EnrolledCourses}" HorizontalAlignment="Stretch">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+										<ColumnDefinition></ColumnDefinition>
+										<ColumnDefinition Width="auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding Title}"></TextBlock>
+                                    <TextBlock Grid.Row="1" Text="{Binding Description}" MaxLines="2" TextWrapping="Wrap"></TextBlock>
+                                    
+
+                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                        <StackPanel Orientation="Horizontal">
+                                            <ProgressBar Minimum="0.0" Maximum="1.0" Value="{Binding Progress}" MinWidth="150"></ProgressBar>
+                                            <TextBlock Text="{Binding Progress, Converter={StaticResource PTTConverter}}"></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
         </Border>
 
     </Grid>

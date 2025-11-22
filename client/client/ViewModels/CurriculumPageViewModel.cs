@@ -16,14 +16,16 @@ namespace client.ViewModels
         public string TXT { get; set; } = "Курсы";
         public string BTN_Search { get; set; } = "Поиск";
 
-        
-        public ObservableCollection<Curriculum> values = new ObservableCollection<Curriculum> { 
-        
-            new Curriculum{Title = "Титле", CurriculumImportance = CurriculumImportance.NECESSARY},
-            new Curriculum{Title = "Титле", CurriculumImportance = CurriculumImportance.IMPORTANT},
-            new Curriculum{Title = "Титле", CurriculumImportance = CurriculumImportance.CIRCUMSTANTIAL},
-            new Curriculum{Title = "Титле", CurriculumImportance = CurriculumImportance.NOT_IMPORTANT}
-        };
-        public ObservableCollection<Curriculum> Values { get { return values; }  }
+        public string SearchText { get; set; } = string.Empty;
+
+        public ObservableCollection<Course> Values { get; set;} 
+        public CurriculumPageViewModel() 
+        { 
+            Values = new ObservableCollection<Course> {
+
+            new Course{Title = "Титле"}
+            };
+        }
+
     }
 }

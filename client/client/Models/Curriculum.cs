@@ -12,10 +12,9 @@ namespace client.Models
         public delegate void OpenTheCurriculumDelegate(int Id);
         private OpenTheCurriculumDelegate _openTheCurriculum { get; set; }
 
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public CurriculumImportance CurriculumImportance { get; set; }
+        public int Id { get; set; } = 0;
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public float CompletionPercentage { get; set; }
 
         public void SetOpenTheCurriculumDelegate(OpenTheCurriculumDelegate openTheCurriculumDelegate) { _openTheCurriculum = openTheCurriculumDelegate; }

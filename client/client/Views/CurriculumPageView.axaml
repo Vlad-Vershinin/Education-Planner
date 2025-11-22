@@ -42,26 +42,25 @@
 
                     
                 <Button Content="Фильтр"></Button>
-                <TextBox BorderThickness="0" Margin="5,0,5,0" Grid.Column="1" CornerRadius="10" Background="{StaticResource TransparentBlack}"></TextBox>
+                <TextBox Watermark="Название курса" Text="{Binding SearchText, Mode=TwoWay}" BorderThickness="0" Margin="5,0,5,0" Grid.Column="1" CornerRadius="10" Background="{StaticResource TransparentBlack}"></TextBox>
                 <Button Grid.Column="2" Content="Поиск"></Button>
                 
             </Grid>
              
         </Border>
         <Border Grid.ColumnSpan="2" Classes="Roundy" Margin="5" Grid.Row="1">
-            <DataGrid ItemsSource="{Binding Values}" CanUserResizeColumns="True" CanUserReorderColumns="False" Background="{StaticResource TransparentBlack}" CornerRadius="20">
+            <DataGrid GridLinesVisibility="Horizontal" IsReadOnly="true" ItemsSource="{Binding Values, Mode=TwoWay}" CanUserResizeColumns="True" CanUserReorderColumns="False" Background="{StaticResource TransparentBlack}" CornerRadius="20">
                 <DataGrid.ColumnHeaderTheme>
 					
                 </DataGrid.ColumnHeaderTheme>
                 <DataGrid.Columns>
-					<DataGridTemplateColumn Width="0.5*" Header="Важность курса">
+                    <DataGridTextColumn Binding="{Binding Title}" Width="auto" Header="Название курса"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Width="1.5*" Header="Описание курса"/>
+                    <DataGridTemplateColumn Width="auto" Header="Включить курс">
                         <DataTemplate>
-							<TextBlock Text="{Binding CurriculumImportance, Converter={StaticResource ITConverter}}"></TextBlock>
+							<Button HorizontalAlignment="Stretch" Content="Включить"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Binding="{Binding Title}" Width="0.5*" Header="Название курса"></DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Description}" Width="1.5*" Header="Описание курса"></DataGridTextColumn>
-                    <DataGridTemplateColumn Width="0.5*" Header="Записаться на курс"></DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

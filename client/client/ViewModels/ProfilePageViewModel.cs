@@ -1,4 +1,5 @@
-﻿using System;
+﻿using client.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,22 @@ namespace client.ViewModels
 {
     public class ProfilePageViewModel : ViewModelBase
     {
-        public string TestText { get; set; } = "hello world";
+        public User CurrentUser {  get; set; }
+        public List<Course> EnrolledCourses { get; set; } 
+
+        public ProfilePageViewModel()
+        {
+            CurrentUser = new User();
+            EnrolledCourses = CurrentUser.EnrolledCourses;
+        }
+
+        public void SetUser(User user)
+        {
+            CurrentUser = user;
+            EnrolledCourses = CurrentUser.EnrolledCourses;
+        }
+
+
+
     }
 }

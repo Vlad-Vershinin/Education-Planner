@@ -1,0 +1,14 @@
+﻿using client.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace client.ViewModels
+{
+    public class CurriculumViewModel : ViewModelBase
+    {
+        public Course CourseSelected {  get; set; }
+    }
+}

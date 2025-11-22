@@ -13,5 +13,7 @@ namespace client.Models
         public string Description { get; set; }
         public List<Lesson> Lessons { get; set; } = new List<Lesson>();
         public int Level { get; set; }
+        public int Hours { get; set; }
+        public double Progress { get; set; }
     }
 }
