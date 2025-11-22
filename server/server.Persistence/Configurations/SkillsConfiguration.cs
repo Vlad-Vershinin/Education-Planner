@@ -8,7 +8,6 @@ namespace server.Persistence.Configurations{
     {
         public void Configure(EntityTypeBuilder<Skill> builder)
         {
-
             builder.HasKey(x => x.Id);
 
             builder

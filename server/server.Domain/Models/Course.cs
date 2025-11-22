@@ -12,8 +12,9 @@ namespace server.Domain.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
+        public int Hours { get; set; }
 
-        public List<LeveledCourse> Skills { get; set; }
+        public List<LeveledSkill> Skills { get; set; }
         public List<Profession> Professions { get; set; }
 
         public Course() { }

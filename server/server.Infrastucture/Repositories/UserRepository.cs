@@ -44,6 +44,35 @@ namespace server.Infrastucture.Repositories
             return await _context.User.FindAsync(login);
         }
 
+        public Task<List<LeveledSkill>> GetUserSkills(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<CourseTaken>> GetUserCourses(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Profession> GetUserProfession(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateUserSkills(List<LeveledSkill> skills)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateUserCourseProgress(int user_id, double progress)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<User> GetUserById(int id)
+        {
+            return await _context.User.FindAsync(id);
+        }
     }
     
 }

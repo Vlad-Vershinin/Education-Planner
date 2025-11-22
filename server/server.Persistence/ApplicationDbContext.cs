@@ -22,6 +22,9 @@ namespace server.Persistence
             modelBuilder.ApplyConfiguration(new SkillsConfiguration());
             modelBuilder.ApplyConfiguration(new CoursesConfiguration());
             modelBuilder.ApplyConfiguration(new ProfessionsConfiguration());
+            modelBuilder.ApplyConfiguration(new LeveledSkillConfiguration());
+            modelBuilder.ApplyConfiguration(new UsersConfiguration());
+            modelBuilder.ApplyConfiguration(new CourseTakenConfiguration());
       
             
 
