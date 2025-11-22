@@ -13,6 +13,6 @@ namespace server.Domain.Interfaces.Repositories
         Task<List<Skill>> GetSkillsByParent(int id);
         Task<Skill> GetSkill(int id);
         Task<List<Course>> GetSkillCourses(int id);
-        Task<List<Profession>> GetSkillProfession(int id);
+        Task<List<Profession>> GetSkillProfessions(int id);
     }
 }

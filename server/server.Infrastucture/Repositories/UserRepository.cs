@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
 using server.Persistence;
 using server.Domain.Models;
-using System.Runtime.Intrinsics.X86;
+
 using server.Domain.Interfaces.Repositories;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
-using System.Reflection.Metadata.Ecma335;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
+using System.Linq;
+using server.Domain.DTOs;
+
 
 namespace server.Infrastucture.Repositories
 {
@@ -44,34 +42,54 @@ namespace server.Infrastucture.Repositories
             return await _context.User.FindAsync(login);
         }
 
-        public Task<List<LeveledSkill>> GetUserSkills(int id)
+        public async Task<List<LeveledSkill>> GetUserSkills(int id)
+        {
+            return _context.User.FindAsync(id).Result.SkillsHave;
+        }
+        public async Task<List<CourseTaken>> GetUserCourses(int id)
+        {
+            return _context.User.FindAsync(id).Result.CoursesTaken;
+        }
+        public async Task<Profession> GetUserProfession(int id)
+        {
+            return _context.User.FindAsync(id).Result.ProfessionChosen;
+        }
+        public async Task UpdateUserSkills(int user_id, List<LeveledSkill> skills)
+        {
+            
+            for (int i = 0; i < skills.Count; i++) {
+                var skill = skills[i];
+                if(_context.User.FindAsync(user_id).Result.SkillsHave.ElementAt(i).Level == skill.Level)
+                {
+                   if( _context.User.FindAsync(user_id).Result.SkillsHave.ElementAt(i).Level < skill.Level)
+                    {
+                        _context.User.FindAsync(user_id).Result.SkillsHave.ElementAt(i).Level = skill.Level;
+                    }
+                        
+                }
+                else {
+                    _context.User.FindAsync(user_id).Result.SkillsHave.Append(skill);
+                }
+            }
+        }
+        public async Task UpdateUserCourseProgress(int user_id, int course_id, double progress)
+        {
+            _context.User.FindAsync(user_id).Result.CoursesTaken.ElementAt(course_id).Progress = progress;
+        }
+
+        public Task<User> GetUserById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<CourseTaken>> GetUserCourses(int id)
+        public Task UpdateUserSkills(int user_id, List<LeveledSkillDto> skills)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Profession> GetUserProfession(int id)
+        public Task UpdateUserProfession(int user_id, int profession_id)
         {
             throw new NotImplementedException();
-        }
-
-        public Task UpdateUserSkills(List<LeveledSkill> skills)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateUserCourseProgress(int user_id, double progress)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<User> GetUserById(int id)
-        {
-            return await _context.User.FindAsync(id);
         }
     }
     

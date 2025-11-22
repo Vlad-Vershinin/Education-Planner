@@ -24,5 +24,30 @@ namespace server.Application.Services
         {
             return new UserDto(await _userRepository.GetUserById(id));
         }
+
+        public async Task<List<CourseTakenDto>> GetUserCoursesAsync(int id)
+        {
+            return _userRepository.GetUserCourses(id).Result.Select(course => new CourseTakenDto(course)).ToList();
+        }
+
+        public async Task<ProfessionDto> GetUserProfessionAsync(int id)
+        {
+            return new ProfessionDto(await _userRepository.GetUserProfession(id));
+        }
+
+        public async Task UpdateUserSkillsAsync(int user_id, List<LeveledSkillDto> skills)
+        {
+            await _userRepository.UpdateUserSkills(user_id, skills);
+        }
+
+        public async Task UpdateUserCourseProgressAsync(int user_id, int course_id, double progress)
+        {
+            await _userRepository.UpdateUserCourseProgress(user_id, course_id, progress);
+        }
+
+        public async Task UpdateUserProfessionAsync(int user_id, int profession_id)
+        {
+            await _userRepository.UpdateUserProfession(user_id, profession_id);
+        }
     }
 }
