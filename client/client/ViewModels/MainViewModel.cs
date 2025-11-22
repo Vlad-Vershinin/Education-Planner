@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using client.Views;
 using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 using System.Reactive;
 using System.Threading.Tasks;
 
@@ -9,21 +10,14 @@ namespace client.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-    public string SplitViewButtonContent { get; set; } = ">";
+    private string _splitViewButtonContent = ">";
+    [Reactive] public string SplitViewButtonContent { get { return _splitViewButtonContent; } set { _splitViewButtonContent = value; } }
     private bool _splitViewIsPaneOpen = false;
-    public bool SplitViewPaneOpen { get { return _splitViewIsPaneOpen; } 
-        set { 
-            if (value)
-            {
-                SplitViewButtonContent = "<";
-
-            }
-            else 
-            {
-                SplitViewButtonContent = ">";
-
-            }
+    
+    [Reactive]public bool SplitViewPaneOpen { get { return _splitViewIsPaneOpen; } 
+        set {
             _splitViewIsPaneOpen = value;
+
         } }
     public UserControl FrameSelected {  get; set; }
     public ProfilePageView ProfilePage { get; set; }
@@ -47,6 +41,17 @@ public class MainViewModel : ViewModelBase
     public async Task PanSwitch() //Метод для использования реактивной командой
     {
         SplitViewPaneOpen = !SplitViewPaneOpen;
+
+        if (SplitViewPaneOpen)
+        {
+            SplitViewButtonContent = "<";
+
+        }
+        else
+        {
+            SplitViewButtonContent = ">";
+
+        }
     }
 
 }

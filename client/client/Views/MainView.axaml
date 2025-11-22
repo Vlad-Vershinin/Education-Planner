@@ -24,10 +24,7 @@
                 
                 <StackPanel Margin="5,10,5,10" Spacing="5">
 
-                    <Button Command="{Binding PanSwitchCommand}" Padding="5" HorizontalContentAlignment="Center" MinWidth="41" HorizontalAlignment="Stretch">
-                       <StackPanel Orientation="Horizontal">
-                           <TextBlock Text="{Binding SplitViewButtonContent}" FontWeight="Black" HorizontalAlignment="Center"></TextBlock>
-                       </StackPanel>
+                    <Button Command="{Binding PanSwitchCommand}" Content="{Binding SplitViewButtonContent}" FontWeight="Black" Padding="5" HorizontalContentAlignment="Center" MinWidth="41" HorizontalAlignment="Stretch">
                    </Button>
 
                    <Button Padding="5" HorizontalAlignment="Stretch">
