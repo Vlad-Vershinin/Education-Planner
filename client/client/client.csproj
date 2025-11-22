@@ -4,6 +4,7 @@
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	<CharacterSet>UTF-16</CharacterSet>
   </PropertyGroup>
   
   <ItemGroup>
@@ -22,6 +23,10 @@
     <PackageReference Include="Avalonia.ReactiveUI" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
   </ItemGroup>
+
+	<PropertyGroup>
+		<CodePage>65001</CodePage>
+	</PropertyGroup>
 
   <ItemGroup>
     <Folder Include="DTOs\" />

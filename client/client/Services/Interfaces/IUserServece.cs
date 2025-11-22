@@ -9,8 +9,6 @@ namespace client.Services.Interfaces
 {
     public interface IUserServece
     {
-        Task<bool> IsUserEnrolledInCourse(int userId, int courseId);
-        Task<Course>GetUserCourse(int userId);
-
+        public User CurrentUser { get; set; }
     }
 }
