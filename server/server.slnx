@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Элементы решения/">
+    <File Path="db.env" />
+  </Folder>
   <Project Path="server.API/server.API.csproj" Id="89dcddf4-2fdb-44ee-9ccb-63997869876d" />
   <Project Path="server.Application/server.Application.csproj" />
   <Project Path="server.Domain/server.Domain.csproj" />

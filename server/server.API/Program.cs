@@ -1,3 +1,4 @@
+
 using server.Domain.Interfaces.Services;
 using server.Domain.Interfaces.Repositories;
 using server.Application.Services;
@@ -15,7 +16,9 @@ namespace server.API
 
             var app = builder.Build();
 
+
             app.Run();
+
         }
     }
 }
