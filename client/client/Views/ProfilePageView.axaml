@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:client.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="client.Views.ProfilePageView" 
+             x:DataType="vm:ProfilePageViewModel">
+            <Design.DataContext>
+				<vm:ProfilePageViewModel/>
+            </Design.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        
+			<Border CornerRadius="15" Padding="10" MinHeight="20" Margin="5"  >
+                <Border.Background>
+					<SolidColorBrush Color="Black" Opacity="150"></SolidColorBrush>
+                </Border.Background>
+                <TextBlock Text="{Binding TestText}"></TextBlock>
+            </Border>
+        
+
+    </Grid>
+</UserControl>
