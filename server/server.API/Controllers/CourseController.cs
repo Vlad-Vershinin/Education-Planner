@@ -21,30 +21,21 @@ namespace server.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCourse(string id)
+        public async Task<IActionResult> GetCourse(Guid id)
         {
-            int course_id;
-            if (!Int32.TryParse(id, out course_id)) { return BadRequest("Bad course id"); }
-
-            return Ok(course_id);
+            return Ok(id);
         }
 
         [HttpGet("{id}/professions")]
-        public async Task<IActionResult> GetCourseProfession(string id)
+        public async Task<IActionResult> GetCourseProfession(Guid id)
         {
-            int course_id;
-            if (!Int32.TryParse(id, out course_id)) { return BadRequest("Bad course id"); }
-
-            return Ok(await _courseService.GetCourseProfessionsAsync(course_id));
+            return Ok(await _courseService.GetCourseProfessionsAsync(id));
         }
 
         [HttpGet("{id}/skills")]
-        public async Task<IActionResult> GetCourseSkills(string id)
+        public async Task<IActionResult> GetCourseSkills(Guid id)
         {
-            int course_id;
-            if (!Int32.TryParse(id, out course_id)) { return BadRequest("Bad course id"); }
-
-            return Ok(await _courseService.GetCourseSkillsAsync(course_id));
+            return Ok(await _courseService.GetCourseSkillsAsync(id));
         }
     }
 }

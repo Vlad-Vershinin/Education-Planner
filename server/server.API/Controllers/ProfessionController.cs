@@ -23,8 +23,8 @@ namespace server.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProfession(string id)
         {
-            int pId;
-            if (!int.TryParse(id, out pId)) return BadRequest("Profession id is incorrect");
+            Guid pId;
+            if (!Guid.TryParse(id, out pId)) return BadRequest("Profession id is incorrect");
 
             return Ok(await _professionService.GetProfessionAsync(pId));
         }
@@ -32,19 +32,19 @@ namespace server.API.Controllers
         [HttpGet("{id}/courses")]
         public async Task<IActionResult> GetCourses(string id)
         {
-            int pId;
-            if (!int.TryParse(id, out pId)) return BadRequest("Profession id is incorrect");
+            Guid pId;
+            if (!Guid.TryParse(id, out pId)) return BadRequest("Profession id is incorrect");
 
-            return Ok(await _professionService.GetProfessionCoursesAsync(pId));
+            return Ok(await _professionService.GetProfessionCoursesAsync());
         }
 
         [HttpGet("{id}/skills")]
         public async Task<IActionResult> GetSkills(string id)
         {
-            int pId;
-            if (!int.TryParse(id, out pId)) return BadRequest("Profession id is incorrect");
+            Guid pId;
+            if (!Guid.TryParse(id, out pId)) return BadRequest("Profession id is incorrect");
 
-            return Ok(await _professionService.GetProfessionSkillsAsync(pId));
+            return Ok(await _professionService.GetProfessionSkillsAsync());
         }
 
     }

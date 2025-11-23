@@ -12,7 +12,7 @@ namespace server.Domain.Interfaces.Services
         Task<List<SkillDto>> GetAllSkillsAsync();
         Task<List<SkillDto>> GetSkillsByParent(Guid Id);
         Task<SkillDto> GetSkillAsync(Guid Id);
-        Task<List<ProfessionDto>> GetSkillProfessionsAsync(Guid Id);
-        Task<List<CourseDto>> GetSkillCoursesAsync(Guid Id);
+        Task<List<ProfessionDto>> GetSkillProfessionsAsync();
+        Task<List<CourseDto>> GetSkillCoursesAsync();
     }
 }

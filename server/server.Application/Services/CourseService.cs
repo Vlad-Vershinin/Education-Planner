@@ -26,17 +26,17 @@ namespace server.Application.Services
 
         public async Task<CourseDto> GetCourseAsync(Guid Id)
         {
-            return new CourseDto(await _courseRepository.GetCourse(id));
+            return new CourseDto(await _courseRepository.GetCourse(Id));
         }
 
         public async Task<List<ProfessionDto>> GetCourseProfessionsAsync(Guid Id)
         {
-            return _courseRepository.GetCourseProfessions(id).Result.Select(profession => new ProfessionDto(profession)).ToList();
+            return _courseRepository.GetCourseProfessions().Result.Select(profession => new ProfessionDto(profession)).ToList();
         }
 
-        public async Task<List<LeveledSkill>> GetCourseSkillsAsync(Guid Id)
+        public async Task<List<LeveledSkillDto>> GetCourseSkillsAsync(Guid Id)
         {
-            return _courseRepository.GetCourseSkills(id).Result.Select(skill => new LeveledSkillDto(skill).ToList();
+            return _courseRepository.GetCourseSkills().Result.Select(skill => new LeveledSkillDto(skill)).ToList();
         }
     }
 }

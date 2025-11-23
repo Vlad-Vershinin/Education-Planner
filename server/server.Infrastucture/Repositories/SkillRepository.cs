@@ -19,13 +19,13 @@ namespace server.Infrastucture.Repositories
         {
             return _context.Skills.ToList();
         }
-        public async Task<List<Skill>> GetSkillsByParent(Guid Id)
+        public async Task<List<Skill>> GetSkillsByParent(Guid id)
         {
             return  _context.Skills.Where(x => x.ParentId == id).ToList();
         }
-        public async Task<Skill> GetSkill(Guid Id)
+        public async Task<Skill> GetSkillById(Guid id)
         {
-            return _context.Skills.ElementAt(id);
+            return _context.Skills.FirstOrDefault(x => x.Id == id);
         }
         public async Task<List<Course>> GetSkillCourses()
         {
@@ -33,7 +33,7 @@ namespace server.Infrastucture.Repositories
         }
         public async Task<List<Profession>> GetSkillProfessions()
         {
-            return _context.Professions.Include(x => x.Skills).ToList();
+            return await _context.Professions.Include(x => x.Skills).ToListAsync();
         }
     }
 }

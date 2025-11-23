@@ -11,7 +11,7 @@ namespace server.Domain.Interfaces.Repositories
     {
         Task<List<Course>> GetAllCourses();
         Task<Course> GetCourse(Guid Id);
-        Task<List<Profession>> GetCourseProfessions(Guid Id);
-        Task<List<LeveledSkill>> GetCourseSkills(Guid Id);
+        Task<List<Profession>> GetCourseProfessions();
+        Task<List<LeveledSkill>> GetCourseSkills();
     }
 }

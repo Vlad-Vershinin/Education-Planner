@@ -15,14 +15,15 @@ namespace server.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ICourseService, CourseService>();
+            builder.Services.AddScoped<ISkillService, SkillService>();
+            builder.Services.AddScoped<IProfessionService, ProfessionService>();
+
             builder.Services.AddScoped<IUserRepository, UserRepository>();
-            builder.Services.AddTransient<IUserService, UserService>();
             builder.Services.AddScoped<ISkillRepository, SkillRepository>();
-            builder.Services.AddTransient<ISkillService, SkillService>();
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
-            builder.Services.AddTransient<ICourseService, CourseService>();
             builder.Services.AddScoped<IProfessionRepository, ProfessionRepository>();
-            builder.Services.AddTransient<IProfessionService, ProfessionService>();
 
             builder.Services.AddControllers();
 

@@ -10,8 +10,8 @@ namespace server.Domain.Interfaces.Repositories
     public interface ISkillRepository
     {
         Task<List<Skill>> GetAllSkills();
-        Task<List<Skill>> GetSkillsByParent(Guid Id);
-        Task<Skill> GetSkill(Guid Id);
+        Task<List<Skill>> GetSkillsByParent(Guid id);
+        Task<Skill> GetSkillById(Guid id);
         Task<List<Course>> GetSkillCourses();
         Task<List<Profession>> GetSkillProfessions();
     }

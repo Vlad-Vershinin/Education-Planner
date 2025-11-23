@@ -24,19 +24,19 @@ namespace server.Application.Services
             return _professionRepository.GetAllProfessions().Result.Select(profession => new ProfessionDto(profession)).ToList();
         }
 
-        public async Task<ProfessionDto> GetProfessionAsync(Guid Id)
+        public async Task<ProfessionDto> GetProfessionAsync(Guid id)
         {
             return new ProfessionDto(await _professionRepository.GetProfession(id));
         }
 
-        public async Task<List<CourseDto>> GetProfessionCoursesAsync(Guid Id)
+        public async Task<List<CourseDto>> GetProfessionCoursesAsync()
         {
-            return _professionRepository.GetProfessionCourses(id).Result.Select(course => new CourseDto(course)).ToList();
+            return _professionRepository.GetProfessionCourses().Result.Select(course => new CourseDto(course)).ToList();
         }
 
-        public async Task<List<SkillDto>> GetProfessionSkillsAsync(Guid Id)
+        public async Task<List<SkillDto>> GetProfessionSkillsAsync()
         {
-            return _professionRepository.GetProfessionSkills(id).Result.Select(skills => new SkillDto(skills)).ToList();
+            return _professionRepository.GetProfessionSkills().Result.Select(skills => new SkillDto(skills)).ToList();
         }
     }
 }

@@ -27,8 +27,8 @@ namespace server.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(string id)
         {
-            int user_id;
-            if (!Int32.TryParse(id, out user_id)) { return BadRequest("User id is empty"); }
+            Guid user_id;
+            if (!Guid.TryParse(id, out user_id)) { return BadRequest("User id is empty"); }
 
             return Ok(await _userService.GetUserAsync(user_id));
         }
@@ -36,8 +36,8 @@ namespace server.API.Controllers
         [HttpGet("{id}/courses")]
         public async Task<IActionResult> GetUserCourses(string id)
         {
-            int user_id;
-            if (!Int32.TryParse(id, out user_id)) { return BadRequest("User id is empty"); }
+            Guid user_id;
+            if (!Guid.TryParse(id, out user_id)) { return BadRequest("User id is empty"); }
 
             return Ok(await _userService.GetUserCoursesAsync(user_id));
         }
@@ -45,8 +45,8 @@ namespace server.API.Controllers
         [HttpGet("{id}/profession")]
         public async Task<IActionResult> GetUserProfession(string id)
         {
-            int user_id;
-            if (!Int32.TryParse(id, out user_id)) { return BadRequest("User id is incorrect"); }
+            Guid user_id;
+            if (!Guid.TryParse(id, out user_id)) { return BadRequest("User id is incorrect"); }
 
             return Ok(await _userService.GetUserProfessionAsync(user_id));
         }
@@ -55,9 +55,9 @@ namespace server.API.Controllers
         public async Task<IActionResult> UpdateUserSkills(string user_id, [FromBody] List<LeveledSkillDto> leveledSkillDtos)
         {
             Guid Id;
-            if (!Int32.TryParse(user_id, out id)) { return BadRequest("User id is incorrect"); }
+            if (!Guid.TryParse(user_id, out Id)) { return BadRequest("User id is incorrect"); }
 
-            await _userService.UpdateUserSkillsAsync(id, leveledSkillDtos);
+            await _userService.UpdateUserSkillsAsync(Id, leveledSkillDtos);
 
             return Ok();
         }
@@ -65,10 +65,10 @@ namespace server.API.Controllers
         [HttpPost("{user_id}/courses/{course_id}")]
         public async Task<IActionResult> UpdateUserCourseProgress(string user_id, string course_id, [FromBody] double progress)
         {
-            int user;
-            int course;
-            if (!Int32.TryParse(user_id, out user)) { return BadRequest("User id is incorrect"); }
-            if (!Int32.TryParse(course_id, out course)) { return BadRequest("Course id is incorrect"); }
+            Guid user;
+            Guid course;
+            if (!Guid.TryParse(user_id, out user)) { return BadRequest("User id is incorrect"); }
+            if (!Guid.TryParse(course_id, out course)) { return BadRequest("Course id is incorrect"); }
 
             await _userService.UpdateUserCourseProgressAsync(user, course, progress);
 
@@ -76,12 +76,12 @@ namespace server.API.Controllers
         }
 
         [HttpPost("{user_id}/profession")]
-        public async Task<IActionResult> UpdateUserProfession(string user_id, [FromBody] int profession_id)
+        public async Task<IActionResult> UpdateUserProfession(string user_id, [FromBody] Guid profession_id)
         {
             Guid Id;
-            if (!Int32.TryParse(user_id, out id)) { return BadRequest("User id is incorrect"); }
+            if (!Guid.TryParse(user_id, out Id)) { return BadRequest("User id is incorrect"); }
 
-            await _userService.UpdateUserProfessionAsync(id, profession_id);
+            await _userService.UpdateUserProfessionAsync(Id, profession_id);
 
             return Ok();
         }

@@ -14,7 +14,7 @@ namespace server.Application.Services
     {
         private readonly ISkillRepository _skillRepository;
 
-        SkillService(ISkillRepository skillRepository) {
+        public SkillService(ISkillRepository skillRepository) {
             _skillRepository = skillRepository;
         }
 
@@ -25,22 +25,22 @@ namespace server.Application.Services
 
         public async Task<SkillDto> GetSkillAsync(Guid Id)
         {
-            return new SkillDto(await _skillRepository.GetSkill(id));
+            return new SkillDto(await _skillRepository.GetSkillById(Id));
         }
 
         public async Task<List<SkillDto>> GetSkillsByParent(Guid Id)
         {
-            return _skillRepository.GetSkillsByParent(id).Result.Select(skill => new SkillDto(skill)).ToList();
+            return _skillRepository.GetSkillsByParent(Id).Result.Select(skill => new SkillDto(skill)).ToList();
         }
 
-        public async Task<List<CourseDto>> GetSkillCoursesAsync(Guid Id)
+        public async Task<List<CourseDto>> GetSkillCoursesAsync()
         {
-            return _skillRepository.GetSkillCourses(id).Result.Select(course => new CourseDto(course)).ToList();
+            return _skillRepository.GetSkillCourses().Result.Select(course => new CourseDto(course)).ToList();
         }
 
-        public async Task<List<ProfessionDto>> GetSkillProfessionsAsync(Guid Id)
+        public async Task<List<ProfessionDto>> GetSkillProfessionsAsync()
         {
-            return _skillRepository.GetSkillProfessions(id).Result.Select(profession => new ProfessionDto(profession)).ToList();
+            return _skillRepository.GetSkillProfessions().Result.Select(profession => new ProfessionDto(profession)).ToList();
         }
     }
 }

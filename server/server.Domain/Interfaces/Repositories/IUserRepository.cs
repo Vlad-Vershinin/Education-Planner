@@ -16,8 +16,9 @@ namespace server.Domain.Interfaces.Repositories
         Task<List<LeveledSkill>> GetUserSkills(Guid Id);
         Task<List<CourseTaken>> GetUserCourses(Guid Id);
         Task<Profession> GetUserProfession(Guid Id);
-        Task UpdateUserSkills(int user_id, List<LeveledSkillDto> skills);
-        Task UpdateUserCourseProgress(int user_id, int course_id, double progress);
-        Task UpdateUserProfession(int user_id, int profession_id);
+        Task UpdateUserSkills(Guid user_id, List<LeveledSkillDto> skills);
+        Task UpdateUserCourseProgress(Guid user_id, Guid course_id, double progress);
+        Task UpdateUserProfession(Guid user_id, Guid profession_id);
+
     }
 }

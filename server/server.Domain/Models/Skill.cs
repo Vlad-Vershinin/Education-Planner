@@ -14,7 +14,7 @@ namespace server.Domain.Models
         public int X { get; set; }
         public int Y { get; set; }
         public int Z { get; set; }
-        public int ParentId { get; set; }
+        public Guid ParentId { get; set; }
 
         public List<Skill> Children { get; set; }
         public List<Profession> Profession { get; set; }
