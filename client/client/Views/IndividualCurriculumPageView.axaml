@@ -55,24 +55,20 @@
              
                 </Border>
                 <Border Grid.ColumnSpan="2" Classes="Roundy" Margin="5" Grid.Row="1">
-                    <DataGrid Name="CourseGrid" SelectedIndex="{Binding SelectedCourseID, Mode=TwoWay}" GridLinesVisibility="Horizontal" IsReadOnly="true" ItemsSource="{Binding Courses, Mode=TwoWay}" CanUserResizeColumns="True" CanUserReorderColumns="False" Background="{StaticResource TransparentBlack}" CornerRadius="20">
+                    <DataGrid Name="CourseGrid" SelectedIndex="{Binding SelectedProfessionID, Mode=TwoWay}" GridLinesVisibility="Horizontal" IsReadOnly="true" ItemsSource="{Binding Professions, Mode=TwoWay}" CanUserResizeColumns="True" CanUserReorderColumns="False" Background="{StaticResource TransparentBlack}" CornerRadius="20">
                         <DataGrid.ColumnHeaderTheme>
 					
                         </DataGrid.ColumnHeaderTheme>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Title}" Width="auto" Header="Название курса"/>
+                            <DataGridTextColumn Binding="{Binding Name}" Width="auto" Header="Название курса"/>
                             <DataGridTextColumn Binding="{Binding Description}" Width="1.5*" Header="Описание курса"/>
-                            <DataGridTemplateColumn Width="auto" Header="Включить курс">
-                                <DataTemplate>
-							        <Button HorizontalAlignment="Stretch" Content="Включить"></Button>
-                                </DataTemplate>
-                            </DataGridTemplateColumn>
+                            
                         </DataGrid.Columns>
                     </DataGrid>
                 </Border>
             </Grid>
         </ContentControl>
-        <ContentControl Content="{Binding SelectedCoursePage}" IsVisible="{Binding IsViewingTheCourse}">
+        <ContentControl Content="{Binding SelectedProfessionPage}" IsVisible="{Binding IsViewingTheCourse}">
 			
         </ContentControl>
     </Grid>

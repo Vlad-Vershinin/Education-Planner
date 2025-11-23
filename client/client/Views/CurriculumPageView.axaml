@@ -43,7 +43,6 @@
                         </Grid.ColumnDefinitions>
 
                     
-                        <Button Content="Фильтр"></Button>
                         <TextBox Watermark="Название курса" Text="{Binding SearchText, Mode=TwoWay}" BorderThickness="0" Margin="5,0,5,0" Grid.Column="1" CornerRadius="10" Background="{StaticResource TransparentBlack}"></TextBox>
                         <Button Grid.Column="2" Content="Поиск"></Button>
                 

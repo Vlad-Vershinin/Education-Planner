@@ -26,7 +26,11 @@ namespace client.ViewModels
 
         private readonly INavigationService _navigationService;
 
-        public User CurrentUser {  get; set; }
+        [Reactive] public User CurrentUser {  get; set; }
+        [Reactive] public Profession CurrentProfession { get; set; }
+
+
+
         [Reactive] public List<Course> EnrolledCourses { get; set; }
         [Reactive] public Course CurrentCourse { get; set; }
 

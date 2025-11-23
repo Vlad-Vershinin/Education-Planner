@@ -8,7 +8,7 @@ namespace client.Models
 {
     public class Profession
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public double Relevance { get; set; }
@@ -17,7 +17,7 @@ namespace client.Models
 
         public Profession() { }
 
-        public Profession(Guid id, string name, string description, double relevance)
+        public Profession(int id, string name, string description, double relevance)
         {
             Id = id;
             Name = name;

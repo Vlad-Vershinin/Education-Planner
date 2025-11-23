@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="client.Views.ProfessionPreviewView"
+             xmlns:vm="clr-namespace:client.ViewModels"
+             xmlns:converters="clr-namespace:client.Models.Convertors"
+             x:DataType="vm:ProfessionPreviewViewModel">
+
+    <UserControl.Resources>
+        <converters:ImportanceColorConvertor x:Key="ICConverter"/>
+        <converters:ImportanceTextConveror x:Key="ITConverter"/>
+        <converters:BooleanInverter x:Key="BInvert"/>
+    </UserControl.Resources>
+    <Grid>
+        <ContentControl IsVisible="{Binding IsViewingProfession, Converter={StaticResource BInvert}}">
+		<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock  DataContext="{Binding Profession}"  Text="{Binding Name}" TextWrapping="Wrap" Margin="10,10,10,0" FontSize="35" FontWeight="Bold"></TextBlock>
+        <Button Grid.Column="1" Command="{Binding GoToPreviousPage_Click}" Content="Назад" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalContentAlignment="Center" VerticalAlignment="Stretch"></Button>
+        <Border Grid.ColumnSpan="2" Margin="10" Classes="Roundy" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.8*"></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Spacing="10">
+					<TextBlock Text="Описание: " FontWeight="Bold"></TextBlock>
+					<TextBlock DataContext="{Binding Profession}" Text="{Binding Description}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Spacing="10">
+					<TextBlock Text="Необходимые навыки" FontWeight="Bold"></TextBlock>
+                    <ListBox>
+						
+                    </ListBox>
+                </StackPanel>
+				
+
+            </Grid>
+        </Border>
+    </Grid>
+    </ContentControl>
+
+
+
+
+        <ContentControl Content="{Binding Curriculum}" IsVisible="{Binding IsViewingProfession}">
+        </ContentControl>
+    </Grid>
+</UserControl>

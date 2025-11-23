@@ -16,17 +16,14 @@ namespace client.ViewModels
     public class IndividualCurriculumPageViewModel : ViewModelBase
     {
         [Reactive] public bool IsViewingTheCourse { get; set; } = false;
-        public string BTN_FilterName { get { return "Фильтр"; } }
-        public string TXT { get; set; } = "Курсы";
-        public string BTN_Search { get; set; } = "Поиск";
 
         public string SearchText { get; set; } = string.Empty;
 
-        public CurriculumView SelectedCoursePage { get; set; }
-        public int SelectedCourseID { get; set; }
+        public ProfessionPreviewView SelectedProfessionPage { get; set; }
+        public int SelectedProfessionID { get; set; }
 
         public ReactiveCommand<Unit, Unit> ViewTheCourse_Click { get; set; }
-        public ObservableCollection<Course> Courses { get; set; }
+        public ObservableCollection<Profession> Professions { get; set; }
         public string SearchProfession { set; get; } = "";
 
 
@@ -36,19 +33,19 @@ namespace client.ViewModels
         {
 
             AppUserService = appUserService;
-            Courses = new ObservableCollection<Course> {
+            Professions = new ObservableCollection<Profession> {
 
-            new Course{Title = "Титле"}
+            new Profession{Name = "Profess"}
             };
-            SelectedCoursePage = new CurriculumView();
-            (SelectedCoursePage.DataContext as CurriculumViewModel).SetDelegate(BackToDataGrid);
+            SelectedProfessionPage = new ProfessionPreviewView();
+            (SelectedProfessionPage.DataContext as ProfessionPreviewViewModel).SetDelegate(BackToDataGrid);
             ViewTheCourse_Click = ReactiveCommand.CreateFromTask(ViewTheCourse);
         }
 
 
         public async Task ViewTheCourse()
         {
-            (SelectedCoursePage.DataContext as CurriculumViewModel).CourseSelected = Courses[SelectedCourseID];
+            (SelectedProfessionPage.DataContext as ProfessionPreviewViewModel).Profession = Professions[SelectedProfessionID];
             IsViewingTheCourse = true;
         }
         public void BackToDataGrid()
