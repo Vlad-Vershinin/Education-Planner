@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,18 @@ namespace server.Domain.Models
             Login = login;
             Password = password;
             Fullname = fullname;
+        }
+
+        public double HoursPerDay()
+        {
+            DateTime dayStarted = (new DateOnly(RoadEnd.Year - 2, RoadEnd.Month, RoadEnd.Day)).ToDateTime(new TimeOnly());
+            int hours = Convert.ToInt32(CoursesTaken.Select(course => course.Course.Hours * course.Progress).Sum());
+            return hours / DateTime.Today.Subtract(dayStarted).Days;
+        }
+
+        public int DaysLeft()
+        {
+            return RoadEnd.ToDateTime(new TimeOnly()).Subtract(DateTime.Today).Days;
         }
     }
 }
