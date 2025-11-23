@@ -5,11 +5,11 @@ namespace server.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RepositoryController : ControllerBase
+    public class ProfessionController : ControllerBase
     {
         private readonly IProfessionService _professionService;
 
-        public RepositoryController(IProfessionService professionService)
+        public ProfessionController(IProfessionService professionService)
         {
             _professionService = professionService;
         }

@@ -21,6 +21,8 @@ namespace server.API
             builder.Services.AddTransient<ISkillService, SkillService>();
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
             builder.Services.AddTransient<ICourseService, CourseService>();
+            builder.Services.AddScoped<IProfessionRepository, ProfessionRepository>();
+            builder.Services.AddTransient<IProfessionService, ProfessionService>();
 
             builder.Services.AddControllers();
 
