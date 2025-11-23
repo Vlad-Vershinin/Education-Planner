@@ -82,11 +82,15 @@
                             <TextBlock  DataContext="{Binding CourseSelected}"  Text="{Binding Description}" TextWrapping="Wrap"></TextBlock>
                         </Expander>
                         <Expander Header="Навыки, которые вы получите" HorizontalAlignment="Stretch">
-                            <ListBox DataContext="{Binding CourseSelected}" HorizontalAlignment="Stretch">
+                            <ListBox DataContext="{Binding CourseSelected}" ItemsSource="{Binding Skills}" HorizontalAlignment="Stretch">
 								<ListBox.ItemTemplate>
 									<DataTemplate>
                                         <Grid>
-											
+                                            <StackPanel>
+											    <TextBlock VerticalAlignment="Center" Text="{Binding Name}" FontWeight="Bold"></TextBlock>
+											    <TextBlock VerticalAlignment="Center" Text="{Binding Description}" FontSize="14"></TextBlock>
+												
+                                            </StackPanel>
                                         </Grid>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
