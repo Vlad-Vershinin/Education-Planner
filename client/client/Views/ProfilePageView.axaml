@@ -55,6 +55,12 @@
                         <TextBlock Text="Логин: "></TextBlock>
                         <TextBlock DataContext="{Binding CurrentUser}" Text="{Binding Login}"></TextBlock>
                     </StackPanel>
+                    
+
+                        <StackPanel Orientation="Horizontal">
+						    <TextBlock Text="Выбранная специальность: "></TextBlock>
+						    <TextBlock DataContext="{Binding CurrentUser}" Text="{Binding }"></TextBlock>
+                         </StackPanel>
                     <StackPanel IsVisible="{Binding CurrentCourse, Converter={StaticResource NTVConverter}}" Grid.Column="0" Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center" Text="Текущий курс: "></TextBlock>
                         <Button DataContext="{Binding CurrentCourse}">
