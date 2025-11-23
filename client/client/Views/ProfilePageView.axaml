@@ -88,9 +88,9 @@
                                 </Grid>
                         </Button>
                     </StackPanel>
-                    <TextBlock Text="Пройденые курсы: "></TextBlock>
                     </StackPanel>
-
+                    <TabControl Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinHeight="200" MinWidth="200">
+                        <TabItem Header="Ваши курсы" VerticalAlignment="Stretch">
                     <ScrollViewer Grid.Row="1" Margin="10" MaxHeight="800" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalScrollBarVisibility="Disabled">
                     <ListBox  Name="EnrolledCourses_GUI" SelectedIndex="{Binding SelectedCourseID, Mode=TwoWay}" ItemsSource="{Binding EnrolledCourses}" Background="transparent" HorizontalAlignment="Stretch">
 						<ListBox.ItemTemplate>
@@ -121,6 +121,50 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                     </ScrollViewer>
+
+                        </TabItem>
+
+
+                        <TabItem Header="Ваши навыки">
+
+
+
+
+
+							<ScrollViewer Grid.Row="1" Margin="10" MaxHeight="800" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalScrollBarVisibility="Disabled">
+                    <ListBox  Name="EnrolledSkills_GUI" SelectedIndex="{Binding SelectedSkillID, Mode=TwoWay}" ItemsSource="{Binding EnrolledCourses}" Background="transparent" HorizontalAlignment="Stretch">
+						<ListBox.ItemTemplate>
+                            
+							<DataTemplate>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="{Binding Title}" FontWeight="Bold"></TextBlock>
+                                    <TextBlock FontSize="16" Grid.Row="1" Text="{Binding Description}" MaxLines="2" TextWrapping="Wrap"></TextBlock>
+                                    
+
+                                    
+
+                                </Grid>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    </ScrollViewer>
+
+
+
+                        </TabItem>
+
+
+                    </TabControl>
+
+
+
+
                     <Button Content="Выйти из профиля" Command="{Binding LogOut_Click}" Padding="1" Grid.Row="2" Foreground="orange">
                         <Button.Background>
 							<SolidColorBrush Color="Red" Opacity="200"></SolidColorBrush>

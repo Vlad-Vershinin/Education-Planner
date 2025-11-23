@@ -1,4 +1,5 @@
 ﻿using client.Models;
+using client.Services;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
@@ -22,8 +23,11 @@ namespace client.ViewModels
         private BackToThePreviousDelegate _backToThePrevious;
 
 
-        public CurriculumViewModel() 
+
+        UserService AppUserService;
+        public CurriculumViewModel(UserService userService) 
         {
+            AppUserService = userService;
             GoToPreviousPage_Click = ReactiveCommand.CreateFromTask(GoToPreviousPage);
         }
 

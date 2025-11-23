@@ -44,7 +44,7 @@ namespace client.ViewModels
             new Course{Title = "Титле"}
             };
 
-            SelectedCoursePage = new CurriculumView();
+            SelectedCoursePage = new CurriculumView(AppUserService);
             (SelectedCoursePage.DataContext as CurriculumViewModel).SetDelegate(BackToDataGrid);
             ViewTheCourse_Click = ReactiveCommand.CreateFromTask(ViewTheCourse);
         }

@@ -1,4 +1,5 @@
 ﻿using client.Models;
+using client.Services;
 using client.Views;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -30,8 +31,10 @@ namespace client.ViewModels
         private BackToThePreviousDelegate _backToThePrevious;
 
 
-        public CoursesSuggestionsViewModel()
+        UserService AppUserService;
+        public CoursesSuggestionsViewModel(UserService userService)
         {
+            AppUserService = userService;
             GoToPreviousPage_Click = ReactiveCommand.CreateFromTask(GoToPreviousPage);
             SuggestedCourses = new List<Course> { 
                 new Course{Title = "dddd", Description="descr"},
@@ -41,7 +44,7 @@ namespace client.ViewModels
         }
         public async Task ViewTheCourse()
         {
-            Curriculum = new CurriculumView();
+            Curriculum = new CurriculumView(AppUserService);
             (Curriculum.DataContext as CurriculumViewModel).CourseSelected = SuggestedCourses[SelectedCourseID];
             (Curriculum.DataContext as CurriculumViewModel).SetDelegate(BackToSuggestions);
             IsViewingCourse = true;

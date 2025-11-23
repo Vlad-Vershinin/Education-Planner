@@ -1,5 +1,6 @@
 ﻿using client.Models;
 using client.Services;
+using client.Services.Interfaces;
 using client.Views;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -37,7 +38,7 @@ namespace client.ViewModels
 
             new Profession{Name = "Profess"}
             };
-            SelectedProfessionPage = new ProfessionPreviewView();
+            SelectedProfessionPage = new ProfessionPreviewView(AppUserService);
             (SelectedProfessionPage.DataContext as ProfessionPreviewViewModel).SetDelegate(BackToDataGrid);
             ViewTheCourse_Click = ReactiveCommand.CreateFromTask(ViewTheCourse);
         }

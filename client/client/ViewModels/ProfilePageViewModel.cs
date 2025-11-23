@@ -31,6 +31,12 @@ namespace client.ViewModels
 
 
 
+        [Reactive] public List<Course> SkillsObtained { get; set; }
+        public int SelectedSkillID { get; set; }
+
+
+
+
         [Reactive] public List<Course> EnrolledCourses { get; set; }
         [Reactive] public Course CurrentCourse { get; set; }
 
@@ -43,28 +49,12 @@ namespace client.ViewModels
             AppUserService = appUserService;
             CurrentUser = appUserService.CurrentUser;
             //EnrolledCourses = CurrentUser.EnrolledCourses;
-            EnrolledCourses = new List<Course>
-            {
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-                new Course{Title = "Тпт", Description="Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr Descr "},
-            };
+            EnrolledCourses = appUserService.CurrentUser.EnrolledCourses;
 
 
             LogOut_Click = ReactiveCommand.CreateFromTask(LogOut);
 
-            SelectedCoursePage = new CurriculumView();
+            SelectedCoursePage = new CurriculumView(AppUserService);
             (SelectedCoursePage.DataContext as CurriculumViewModel).SetDelegate(BackToDataGrid);
             ViewTheCourse_Click = ReactiveCommand.CreateFromTask(ViewTheCourse);
         }
@@ -85,6 +75,7 @@ namespace client.ViewModels
 
         public async Task ViewTheCourse()
         {
+
             (SelectedCoursePage.DataContext as CurriculumViewModel).CourseSelected = EnrolledCourses[SelectedCourseID];
             IsViewingTheCourse = true;
         }
