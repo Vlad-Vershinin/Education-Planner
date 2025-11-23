@@ -12,7 +12,7 @@ namespace client.ViewModels
 {
     public class CurriculumViewModel : ViewModelBase
     {
-        [Reactive] public Course CourseSelected {  get; set; }
+        [Reactive] public Course CourseSelected {  get; set; } = new Course();
 
 
 

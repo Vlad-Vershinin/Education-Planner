@@ -14,14 +14,16 @@ namespace client.ViewModels
     public class ProfessionPreviewViewModel : ViewModelBase
     {
 
-        [Reactive] public CurriculumView Curriculum { get; set; }
 
 
         [Reactive] public Profession Profession { get; set; }
         [Reactive] public bool IsViewingProfession { get; set; } = false;
+        [Reactive] public CoursesSuggestions CurriculumPage { get; set; }
+
 
 
         public ReactiveCommand<Unit, Unit> GoToPreviousPage_Click { get; set; }
+        public ReactiveCommand<Unit, Unit> ShowSuggestedCourses_Click { get; set; }
 
         public delegate void BackToThePreviousDelegate();
         private BackToThePreviousDelegate _backToThePrevious;
@@ -30,6 +32,7 @@ namespace client.ViewModels
         public ProfessionPreviewViewModel()
         {
             GoToPreviousPage_Click = ReactiveCommand.CreateFromTask(GoToPreviousPage);
+            ShowSuggestedCourses_Click = ReactiveCommand.CreateFromTask(ShowSuggestedCourses);
         }
 
         public void SetDelegate(BackToThePreviousDelegate backToThePreviousDelegate)
@@ -42,6 +45,23 @@ namespace client.ViewModels
             {
                 _backToThePrevious.Invoke();
             }
+        }
+        public async Task ShowSuggestedCourses()
+        {
+            CurriculumPage = new CoursesSuggestions();
+            (CurriculumPage.DataContext as CoursesSuggestionsViewModel).SetDelegate(ReturnToThisPage);
+            (CurriculumPage.DataContext as CoursesSuggestionsViewModel).SuggestedCourses = new List<Course>{
+                new Course{Title = "dddd", Description="descr"},
+                new Course{Title = "dddd"},
+                new Course{Title = "dddd"},
+                new Course{Title = "dddd"},
+            };
+            IsViewingProfession = true;
+        }
+        public void ReturnToThisPage()
+        {
+            CurriculumPage = null;
+            IsViewingProfession = false;
         }
     }
 }
