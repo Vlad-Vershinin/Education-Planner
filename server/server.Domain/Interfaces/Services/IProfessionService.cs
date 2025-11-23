@@ -1,4 +1,5 @@
 ﻿using server.Domain.Models;
+using server.Domain.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace server.Domain.Interfaces.Services
 {
     public interface IProfessionService
     {
-        Task<List<Profession>> GetAllProfessionsAsync();
-        Task<Profession> GetProfessionAsync(int id);
-        Task<List<Course>> GetProfessionCoursesAsync(int id);
-        Task<List<Skill>> GetProfessionSkillsAsync(int id);
+        Task<List<ProfessionDto>> GetAllProfessionsAsync();
+        Task<ProfessionDto> GetProfessionAsync(Guid Id);
+        Task<List<CourseDto>> GetProfessionCoursesAsync(Guid Id);
+        Task<List<SkillDto>> GetProfessionSkillsAsync(Guid Id);
     }
 }

@@ -1,8 +1,11 @@
 ﻿using server.Domain.Interfaces.Repositories;
 using server.Domain.Models;
 using server.Persistence;
+using server.Persistence.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace server.Infrastucture.Repositories
@@ -16,15 +19,15 @@ namespace server.Infrastucture.Repositories
         {
             return _context.Courses.ToList();
         }
-        public async Task<Course> GetCourse(int id)
+        public async Task<Course> GetCourse(Guid Id)
         {
             return _context.Courses.ElementAt(id);
         }
-        public async Task<List<Profession>> GetCourseProfessions(int id)
+        public async Task<List<Profession>> GetCourseProfessions(Guid Id)
         {
             return _context.Courses.ElementAt(id).Professions;
         }
-        public async Task<List<LeveledSkill>> GetCourseSkills(int id)
+        public async Task<List<LeveledSkill>> GetCourseSkills(Guid Id)
         {
             return _context.Courses.ElementAt(id).Skills;
         }

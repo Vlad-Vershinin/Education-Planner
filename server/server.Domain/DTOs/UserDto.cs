@@ -12,14 +12,16 @@ namespace server.Domain.DTOs
         public Guid Id { get; set; }
         public string Login { get; set; }
         public string Fullname { get; set; }
+        public DateOnly RoadEnd { get; set; }
 
         public UserDto() { }
 
-        public UserDto(Guid id, string login, string fullname)
+        public UserDto(Guid id, string login, string fullname, DateOnly roadEnd)
         {
             Id = id;
             Login = login;
             Fullname = fullname;
+            RoadEnd = roadEnd;
         }
 
         public UserDto(User user)
@@ -27,6 +29,7 @@ namespace server.Domain.DTOs
             Id = user.Id;
             Login = user.Login;
             Fullname = user.Fullname;
+            RoadEnd = user.RoadEnd;
         }
     }
 }

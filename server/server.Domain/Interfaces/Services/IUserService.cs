@@ -11,9 +11,9 @@ namespace server.Domain.Interfaces.Services
     public interface IUserService
     {
         Task<UserDto> AuthorizeAsync(string login, string password);
-        Task<UserDto> GetUserAsync(int id);
-        Task<List<CourseTakenDto>> GetUserCoursesAsync(int id);
-        Task<ProfessionDto> GetUserProfessionAsync(int id);
+        Task<UserDto> GetUserAsync(Guid Id);
+        Task<List<CourseTakenDto>> GetUserCoursesAsync(Guid Id);
+        Task<ProfessionDto> GetUserProfessionAsync(Guid Id);
         Task UpdateUserSkillsAsync(int user_id, List<LeveledSkillDto> skills);
         Task UpdateUserCourseProgressAsync(int user_id, int course_id, double progress);
         Task UpdateUserProfessionAsync(int user_id, int profession_id);

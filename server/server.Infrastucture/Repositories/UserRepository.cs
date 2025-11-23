@@ -42,15 +42,15 @@ namespace server.Infrastucture.Repositories
             return await _context.User.FindAsync(login);
         }
 
-        public async Task<List<LeveledSkill>> GetUserSkills(int id)
+        public async Task<List<LeveledSkill>> GetUserSkills(Guid Id)
         {
             return _context.User.FindAsync(id).Result.SkillsHave;
         }
-        public async Task<List<CourseTaken>> GetUserCourses(int id)
+        public async Task<List<CourseTaken>> GetUserCourses(Guid Id)
         {
             return _context.User.FindAsync(id).Result.CoursesTaken;
         }
-        public async Task<Profession> GetUserProfession(int id)
+        public async Task<Profession> GetUserProfession(Guid Id)
         {
             return _context.User.FindAsync(id).Result.ProfessionChosen;
         }
@@ -77,7 +77,7 @@ namespace server.Infrastucture.Repositories
             _context.User.FindAsync(user_id).Result.CoursesTaken.ElementAt(course_id).Progress = progress;
         }
 
-        public Task<User> GetUserById(int id)
+        public Task<User> GetUserById(Guid Id)
         {
             throw new NotImplementedException();
         }

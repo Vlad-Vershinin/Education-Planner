@@ -23,17 +23,22 @@ namespace server.Application.Services
             return _skillRepository.GetAllSkills().Result.Select(skill => new SkillDto(skill)).ToList();
         }
 
-        public async Task<SkillDto> GetSkillAsync(int id)
+        public async Task<SkillDto> GetSkillAsync(Guid Id)
         {
             return new SkillDto(await _skillRepository.GetSkill(id));
         }
 
-        public async Task<List<CourseDto>> GetSkillCoursesAsync(int id)
+        public async Task<List<SkillDto>> GetSkillsByParent(Guid Id)
+        {
+            return _skillRepository.GetSkillsByParent(id).Result.Select(skill => new SkillDto(skill)).ToList();
+        }
+
+        public async Task<List<CourseDto>> GetSkillCoursesAsync(Guid Id)
         {
             return _skillRepository.GetSkillCourses(id).Result.Select(course => new CourseDto(course)).ToList();
         }
 
-        public async Task<List<ProfessionDto>> GetSkillProfessionsAsync(int id)
+        public async Task<List<ProfessionDto>> GetSkillProfessionsAsync(Guid Id)
         {
             return _skillRepository.GetSkillProfessions(id).Result.Select(profession => new ProfessionDto(profession)).ToList();
         }

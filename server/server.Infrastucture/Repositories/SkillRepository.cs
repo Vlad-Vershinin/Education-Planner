@@ -2,10 +2,12 @@
 using server.Domain.Interfaces.Repositories;
 using server.Domain.Models;
 using server.Persistence;
+using server.Persistence.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-
 
 
 namespace server.Infrastucture.Repositories
@@ -17,11 +19,11 @@ namespace server.Infrastucture.Repositories
         {
             return _context.Skills.ToList();
         }
-        public async Task<List<Skill>> GetSkillsByParent(int id)
+        public async Task<List<Skill>> GetSkillsByParent(Guid Id)
         {
             return  _context.Skills.Where(x => x.ParentId == id).ToList();
         }
-        public async Task<Skill> GetSkill(int id)
+        public async Task<Skill> GetSkill(Guid Id)
         {
             return _context.Skills.ElementAt(id);
         }
@@ -29,9 +31,9 @@ namespace server.Infrastucture.Repositories
         {
             return await _context.Courses.Include(x => x.Skills).ToListAsync();
         }
-        public async Task<List<Profession>> GetSkillProfession(int id)
+        public async Task<List<Profession>> GetSkillProfessions()
         {
-            return _context.Skills.ElementAt(id).Profession;
+            return _context.Professions.Include(x => x.Skills).ToList();
         }
     }
 }

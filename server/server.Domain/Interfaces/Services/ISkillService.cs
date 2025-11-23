@@ -10,8 +10,9 @@ namespace server.Domain.Interfaces.Services
     public interface ISkillService
     {
         Task<List<SkillDto>> GetAllSkillsAsync();
-        Task<SkillDto> GetSkillAsync(int id);
-        Task<List<ProfessionDto>> GetSkillProfessionsAsync(int id);
-        Task<List<CourseDto>> GetSkillCoursesAsync(int id);
+        Task<List<SkillDto>> GetSkillsByParent(Guid Id);
+        Task<SkillDto> GetSkillAsync(Guid Id);
+        Task<List<ProfessionDto>> GetSkillProfessionsAsync(Guid Id);
+        Task<List<CourseDto>> GetSkillCoursesAsync(Guid Id);
     }
 }

@@ -20,17 +20,17 @@ namespace server.Application.Services
             return new UserDto(await _userRepository.GetUserByLogin(login));
         }
 
-        public async Task<UserDto> GetUserAsync(int id)
+        public async Task<UserDto> GetUserAsync(Guid Id)
         {
             return new UserDto(await _userRepository.GetUserById(id));
         }
 
-        public async Task<List<CourseTakenDto>> GetUserCoursesAsync(int id)
+        public async Task<List<CourseTakenDto>> GetUserCoursesAsync(Guid Id)
         {
             return _userRepository.GetUserCourses(id).Result.Select(course => new CourseTakenDto(course)).ToList();
         }
 
-        public async Task<ProfessionDto> GetUserProfessionAsync(int id)
+        public async Task<ProfessionDto> GetUserProfessionAsync(Guid Id)
         {
             return new ProfessionDto(await _userRepository.GetUserProfession(id));
         }

@@ -54,7 +54,7 @@ namespace server.API.Controllers
         [HttpPost("{user_id}/skills")]
         public async Task<IActionResult> UpdateUserSkills(string user_id, [FromBody] List<LeveledSkillDto> leveledSkillDtos)
         {
-            int id;
+            Guid Id;
             if (!Int32.TryParse(user_id, out id)) { return BadRequest("User id is incorrect"); }
 
             await _userService.UpdateUserSkillsAsync(id, leveledSkillDtos);
@@ -78,7 +78,7 @@ namespace server.API.Controllers
         [HttpPost("{user_id}/profession")]
         public async Task<IActionResult> UpdateUserProfession(string user_id, [FromBody] int profession_id)
         {
-            int id;
+            Guid Id;
             if (!Int32.TryParse(user_id, out id)) { return BadRequest("User id is incorrect"); }
 
             await _userService.UpdateUserProfessionAsync(id, profession_id);

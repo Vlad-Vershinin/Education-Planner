@@ -12,6 +12,7 @@ namespace server.Domain.Models
         public string Login { get; set; }
         public string Password { get; set; }
         public string Fullname { get; set; }
+        public DateOnly RoadEnd { get; set; }
         public Profession ProfessionChosen { get; set; }
         public List<CourseTaken> CoursesTaken { get; set; }
         public List<LeveledSkill> SkillsHave { get; set; }
