@@ -1,0 +1,75 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="client.Views.IndividualCurriculumPageView"
+             xmlns:vm="clr-namespace:client.ViewModels"
+             x:DataType="vm:IndividualCurriculumPageViewModel"
+             xmlns:converter="clr-namespace:client.Models.Convertors">
+
+
+
+
+    <UserControl.Resources>
+        <converter:ImportanceColorConvertor x:Key="ICConverter"/>
+        <converter:ImportanceTextConveror x:Key="ITConverter"/>
+        <converter:BooleanInverter x:Key="BInvert"/>
+    </UserControl.Resources>
+    <Grid>
+        <ContentControl IsVisible="{Binding IsViewingTheCourse, Converter={StaticResource BInvert}}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Border Classes="Roundy" Margin="5,5,5,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="10" VerticalAlignment="Stretch">
+                               <TextBlock VerticalAlignment="Center" Text="Курсы по профессии" FontSize="25" FontWeight="Bold" LetterSpacing="1"></TextBlock>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+                <Border Grid.Column="1" Classes="Roundy" Margin="0,5,5,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                    
+                        <Button Content="Фильтр"></Button>
+                      <ComboBox IsEditable="True" IsTextSearchEnabled="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Text="{Binding SearchProfession, Mode=TwoWay}" BorderThickness="0" Margin="5,0,5,0" Grid.Column="1" CornerRadius="10" Background="{StaticResource TransparentBlack}"></ComboBox>
+
+                        <Button Grid.Column="2" Content="Поиск"></Button>
+                
+                    </Grid>
+             
+                </Border>
+                <Border Grid.ColumnSpan="2" Classes="Roundy" Margin="5" Grid.Row="1">
+                    <DataGrid Name="CourseGrid" SelectedIndex="{Binding SelectedProfessionID, Mode=TwoWay}" GridLinesVisibility="Horizontal" IsReadOnly="true" ItemsSource="{Binding Professions, Mode=TwoWay}" CanUserResizeColumns="True" CanUserReorderColumns="False" Background="{StaticResource TransparentBlack}" CornerRadius="20">
+                        <DataGrid.ColumnHeaderTheme>
+					
+                        </DataGrid.ColumnHeaderTheme>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Name}" Width="auto" Header="Название курса"/>
+                            <DataGridTextColumn Binding="{Binding Description}" Width="1.5*" Header="Описание курса"/>
+                            
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+            </Grid>
+        </ContentControl>
+        <ContentControl Content="{Binding SelectedProfessionPage}" IsVisible="{Binding IsViewingTheCourse}">
+			
+        </ContentControl>
+    </Grid>
+</UserControl>

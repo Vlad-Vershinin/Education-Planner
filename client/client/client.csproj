@@ -9,9 +9,28 @@
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Sources\Courses.png" />
+    <None Remove="Sources\Gear.png" />
+    <None Remove="Sources\PersonalCourses.png" />
+    <None Remove="Sources\PFP.png" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AvaloniaResource Include="Sources\Courses.png" />
+    <AvaloniaResource Include="Sources\Gear.png" />
+    <AvaloniaResource Include="Sources\PersonalCourses.png" />
+    <AvaloniaResource Include="Sources\PFP.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.BuildServices">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Avalonia.Controls.DataGrid" />
     <PackageReference Include="Avalonia.Themes.Fluent" />
     <PackageReference Include="Avalonia.Fonts.Inter" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
@@ -20,5 +39,8 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Avalonia.ReactiveUI" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="ReactiveUI" />
+    <PackageReference Include="ReactiveUI.Fody" />
   </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+	  <CharacterSet>UTF-16</CharacterSet>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -20,6 +21,11 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+
+
+	<PropertyGroup>
+		<CodePage>65001</CodePage>
+	</PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\client\client.csproj" />
