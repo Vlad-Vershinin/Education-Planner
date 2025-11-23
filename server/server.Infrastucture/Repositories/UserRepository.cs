@@ -42,19 +42,19 @@ namespace server.Infrastucture.Repositories
             return await _context.User.FindAsync(login);
         }
 
-        public async Task<List<LeveledSkill>> GetUserSkills(int id)
+        public async Task<List<LeveledSkill>> GetUserSkills(Guid id)
         {
             return _context.User.FindAsync(id).Result.SkillsHave;
         }
-        public async Task<List<CourseTaken>> GetUserCourses(int id)
+        public async Task<List<CourseTaken>> GetUserCourses(Guid id)
         {
             return _context.User.FindAsync(id).Result.CoursesTaken;
         }
-        public async Task<Profession> GetUserProfession(int id)
+        public async Task<Profession> GetUserProfession(Guid id)
         {
             return _context.User.FindAsync(id).Result.ProfessionChosen;
         }
-        public async Task UpdateUserSkills(int user_id, List<LeveledSkill> skills)
+        public async Task UpdateUserSkills(Guid user_id, List<LeveledSkill> skills)
         {
             
             for (int i = 0; i < skills.Count; i++) {
@@ -77,19 +77,33 @@ namespace server.Infrastucture.Repositories
             _context.User.FindAsync(user_id).Result.CoursesTaken.ElementAt(course_id).Progress = progress;
         }
 
-        public Task<User> GetUserById(int id)
+        public async Task UpdateUserProfession(Guid user_id, Guid profession_id)
         {
-            throw new NotImplementedException();
+            _context.User.FindAsync(user_id).Result.ProfessionChosen = _context.Professions.FindAsync(profession_id).Result;
         }
 
-        public Task UpdateUserSkills(int user_id, List<LeveledSkillDto> skills)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task UpdateUserProfession(int user_id, int profession_id)
+        public async Task UpdateUserSkills(Guid user_id, List<LeveledSkillDto> skills)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < skills.Count; i++) {
+                var skill = skills[i];
+                if(_context.User.FindAsync(user_id).Result.SkillsHave.ElementAt(i).Level == skill.Level)
+                {
+                   if( _context.User.FindAsync(user_id).Result.SkillsHave.ElementAt(i).Level < skill.Level)
+                    {
+                        _context.User.FindAsync(user_id).Result.SkillsHave.ElementAt(i).Level = skill.Level;
+                    }
+                        
+                }
+                else {
+                    var nonDtoSKill = new LeveledSkill(skill);
+                    _context.User.FindAsync(user_id).Result.SkillsHave.Append(nonDtoSKill);
+                }
+            }
+        }
+        public async Task UpdateUserCourseProgress(Guid user_id, Guid course_id, double progress)
+        {
+            _context.User.FirstOrDefault(x => x.Id == user_id).CoursesTaken.FirstOrDefault(x => x.CourseId == course_id).Progress = progress;
         }
     }
     

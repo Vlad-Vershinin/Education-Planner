@@ -20,9 +20,9 @@ namespace server.Infrastucture.Repositories
         {
             return _context.Courses.ToList();
         }
-        public async Task<Course> GetCourseById(int id)
+        public async Task<Course> GetCourseById(Guid id)
         {
-            return _context.Courses.ElementAt(id);
+            return _context.Courses.FirstOrDefault(c => c.Id == id);
         }
         public async Task<List<Profession>> GetCourseProfessions()
         {

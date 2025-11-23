@@ -11,13 +11,13 @@ namespace server.Domain.Interfaces.Repositories
     public interface IUserRepository
     {
         Task<List<User>> GetAllUsers();
-        Task<User> GetUserById(int id);
+        Task<User> GetUserById(Guid id);
         Task<User> GetUserByLogin(string login);
-        Task<List<LeveledSkill>> GetUserSkills(int id);
-        Task<List<CourseTaken>> GetUserCourses(int id);
-        Task<Profession> GetUserProfession(int id);
-        Task UpdateUserSkills(int user_id, List<LeveledSkillDto> skills);
-        Task UpdateUserCourseProgress(int user_id, int course_id, double progress);
-        Task UpdateUserProfession(int user_id, int profession_id);
+        Task<List<LeveledSkill>> GetUserSkills(Guid id);
+        Task<List<CourseTaken>> GetUserCourses(Guid id);
+        Task<Profession> GetUserProfession(Guid id);
+        Task UpdateUserSkills(Guid user_id, List<LeveledSkillDto> skills);
+        Task UpdateUserCourseProgress(Guid user_id, Guid course_id, double progress);
+        Task UpdateUserProfession(Guid user_id, Guid profession_id);
     }
 }

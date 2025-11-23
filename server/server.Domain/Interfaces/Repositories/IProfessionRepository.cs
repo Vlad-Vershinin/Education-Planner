@@ -10,7 +10,7 @@ namespace server.Domain.Interfaces.Repositories
     public interface IProfessionRepository
     {
         Task<List<Profession>> GetAllProfessions();
-        Task<Profession> GetProfessionById(int id);
+        Task<Profession> GetProfessionById(Guid id);
         Task<List<Course>> GetProfessionCourses();
         Task<List<Skill>> GetProfessionSkills();
         Task<List<Profession>> GetSkillProfessions();

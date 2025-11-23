@@ -10,7 +10,7 @@ namespace server.Domain.Interfaces.Repositories
     public interface ICourseRepository
     {
         Task<List<Course>> GetAllCourses();
-        Task<Course> GetCourseById(int id);
+        Task<Course> GetCourseById(Guid id);
         Task<List<Profession>> GetCourseProfessions();
         Task<List<CourseTaken>> GetCourseSkills();
     }
