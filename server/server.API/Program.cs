@@ -1,4 +1,12 @@
 
+using server.Domain.Interfaces.Services;
+using server.Domain.Interfaces.Repositories;
+using server.Application.Services;
+using server.Infrastucture.Repositories;
+
+using Microsoft.EntityFrameworkCore;
+using server.Persistence;
+
 namespace server.API
 {
     public class Program
@@ -7,20 +15,24 @@ namespace server.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ICourseService, CourseService>();
+            builder.Services.AddScoped<ISkillService, SkillService>();
+            builder.Services.AddScoped<IProfessionService, ProfessionService>();
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<ISkillRepository, SkillRepository>();
+            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<IProfessionRepository, ProfessionRepository>();
+
             builder.Services.AddControllers();
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
-            if (app.Environment.IsDevelopment())
-            {
-                app.MapOpenApi();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-
+            app.UseRouting();
             app.MapControllers();
 
             app.Run();

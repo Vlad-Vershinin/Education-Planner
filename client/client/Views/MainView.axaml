@@ -12,5 +12,52 @@
     <vm:MainViewModel />
   </Design.DataContext>
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  
+    <Grid>
+        <Grid.ColumnDefinitions>
+			<ColumnDefinition Width="auto"></ColumnDefinition>
+			<ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ContentControl Grid.Column="1" Content="{Binding FrameSelected}"></ContentControl>
+        <SplitView Grid.Column="0" CompactPaneLength="50" OpenPaneLength="250" PaneBackground="{StaticResource TransparentBlack}" IsPaneOpen="{Binding SplitViewPaneOpen, Mode=TwoWay}" DisplayMode="CompactInline">
+            <SplitView.Pane>
+                
+                <StackPanel Margin="5,10,5,10" Spacing="5">
+
+                    <Button Command="{Binding PanSwitchCommand}" Content="{Binding SplitViewButtonContent}" FontWeight="Black" Padding="5" HorizontalContentAlignment="Center" MinWidth="41" HorizontalAlignment="Stretch">
+                   </Button>
+
+                   <Button Command="{Binding SwitchToCurriculumPage}" Padding="5" HorizontalAlignment="Stretch">
+                       <StackPanel Orientation="Horizontal">
+                       <Image Source="/Sources/Courses.png" Width="28" Margin="0,0,10,0"/>
+                           <TextBlock Text="Все курсы"></TextBlock>
+                       </StackPanel>
+                   </Button>
+
+                    <Button Command="{Binding SwitchToIndividualCurriculumPage}" Padding="5" HorizontalAlignment="Stretch">
+                       <StackPanel Orientation="Horizontal">
+                       <Image Source="/Sources/PersonalCourses.png" Width="28" Margin="0,0,10,0"/>
+                           <TextBlock Text="Подобрать курсы"></TextBlock>
+                       </StackPanel>
+                   </Button>
+
+                    <Button Padding="5" HorizontalAlignment="Stretch" IsVisible="False">
+                       <StackPanel Orientation="Horizontal">
+                       <Image Source="/Sources/Gear.png" Width="28" Margin="0,0,10,0"/>
+                           <TextBlock Text="Настройки"></TextBlock>
+                       </StackPanel>
+                   </Button>
+
+                    <Button Command="{Binding SwitchToProfilePage}" Padding="5" HorizontalAlignment="Stretch">
+                       <StackPanel Orientation="Horizontal">
+                       <Image Source="/Sources/PFP.png" Width="28" Margin="0,0,10,0"/>
+                           <TextBlock Text="Профиль"></TextBlock>
+                       </StackPanel>
+                   </Button>
+
+                </StackPanel>
+            </SplitView.Pane>
+        </SplitView>
+    </Grid>
+
 </UserControl>
