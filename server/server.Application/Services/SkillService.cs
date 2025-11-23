@@ -28,6 +28,11 @@ namespace server.Application.Services
             return new SkillDto(await _skillRepository.GetSkill(id));
         }
 
+        public async Task<List<SkillDto>> GetSkillsByParent(int id)
+        {
+            return _skillRepository.GetSkillsByParent(id).Result.Select(skill => new SkillDto(skill)).ToList();
+        }
+
         public async Task<List<CourseDto>> GetSkillCoursesAsync(int id)
         {
             return _skillRepository.GetSkillCourses(id).Result.Select(course => new CourseDto(course)).ToList();

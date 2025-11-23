@@ -8,7 +8,6 @@ namespace server.Infrastucture.Repositories
     {
         private readonly ApplicationDbContext _context;
 
-
         public async Task<List<Course>> GetAllCourses()
         {
             return _context.Courses.ToList();

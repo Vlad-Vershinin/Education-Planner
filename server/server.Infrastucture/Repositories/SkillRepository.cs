@@ -9,6 +9,7 @@ namespace server.Infrastucture.Repositories
     public class SkillRepository : ISkillRepository
     {
         private readonly ApplicationDbContext _context;
+
         public async Task<List<Skill>> GetAllSkills()
         {
             return _context.Skills.ToList();
@@ -25,7 +26,7 @@ namespace server.Infrastucture.Repositories
         {
             return _context.Skills.ElementAt(id).Courses;
         }
-        public async Task<List<Profession>> GetSkillProfession(int id)
+        public async Task<List<Profession>> GetSkillProfessions(int id)
         {
             return _context.Skills.ElementAt(id).Profession;
         }

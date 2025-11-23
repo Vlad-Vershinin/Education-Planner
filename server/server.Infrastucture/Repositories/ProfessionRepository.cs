@@ -9,7 +9,6 @@ namespace server.Infrastucture.Repositories
     {
         private readonly ApplicationDbContext _context;
 
-
         public async Task<List<Profession>> GetAllProfessions()
         {
             return _context.Professions.ToList();
