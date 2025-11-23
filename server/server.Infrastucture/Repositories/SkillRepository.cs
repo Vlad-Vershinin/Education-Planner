@@ -1,6 +1,10 @@
-﻿using server.Domain.Interfaces.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using server.Domain.Interfaces.Repositories;
 using server.Domain.Models;
 using server.Persistence;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 
 
@@ -21,9 +25,9 @@ namespace server.Infrastucture.Repositories
         {
             return _context.Skills.ElementAt(id);
         }
-        public async Task<List<Course>> GetSkillCourses(int id)
+        public async Task<List<Course>> GetSkillCourses()
         {
-            return _context.Skills.ElementAt(id).Courses;
+            return await _context.Courses.Include(x => x.Skills).ToListAsync();
         }
         public async Task<List<Profession>> GetSkillProfession(int id)
         {
