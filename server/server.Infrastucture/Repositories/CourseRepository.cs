@@ -1,12 +1,19 @@
 ﻿using server.Domain.Interfaces.Repositories;
 using server.Domain.Models;
 using server.Persistence;
+using server.Persistence.Configurations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace server.Infrastucture.Repositories
 {
     public class CourseRepository : ICourseRepository
     {
         private readonly ApplicationDbContext _context;
+
 
         public async Task<List<Course>> GetAllCourses()
         {

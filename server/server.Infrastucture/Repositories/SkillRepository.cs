@@ -1,7 +1,13 @@
-﻿using server.Domain.Interfaces.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using server.Domain.Interfaces.Repositories;
 using server.Domain.Models;
 using server.Persistence;
-
+using server.Persistence.Configurations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 
 namespace server.Infrastucture.Repositories
@@ -9,7 +15,6 @@ namespace server.Infrastucture.Repositories
     public class SkillRepository : ISkillRepository
     {
         private readonly ApplicationDbContext _context;
-
         public async Task<List<Skill>> GetAllSkills()
         {
             return _context.Skills.ToList();
@@ -22,13 +27,13 @@ namespace server.Infrastucture.Repositories
         {
             return _context.Skills.ElementAt(id);
         }
-        public async Task<List<Course>> GetSkillCourses(int id)
+        public async Task<List<Course>> GetSkillCourses()
         {
-            return _context.Skills.ElementAt(id).Courses;
+            return _context.Courses.Include(x => x.Skills).ToList();
         }
-        public async Task<List<Profession>> GetSkillProfessions(int id)
+        public async Task<List<Profession>> GetSkillProfessions()
         {
-            return _context.Skills.ElementAt(id).Profession;
+            return _context.Professions.Include(x => x.Skills).ToList();
         }
     }
 }
