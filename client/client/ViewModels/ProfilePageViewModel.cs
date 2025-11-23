@@ -83,6 +83,10 @@ namespace client.ViewModels
         {
             IsViewingTheCourse = false;
         }
+        public void Refresh()
+        {
+            CurrentUser = AppUserService.CurrentUser;
+        }
 
 
     }

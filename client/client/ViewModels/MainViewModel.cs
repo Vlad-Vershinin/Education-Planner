@@ -80,6 +80,7 @@ public class MainViewModel : ViewModelBase
     public async Task switchProfilePage()
     {
         FrameSelected = ProfilePage;
+        (ProfilePage.DataContext as ProfilePageViewModel).Refresh();
     }
 
     public async Task switchToCurriculum()
