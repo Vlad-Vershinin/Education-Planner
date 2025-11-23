@@ -13,8 +13,8 @@ namespace server.Persistence
         public DbSet<Skill>               Skills              { get; set; }
         public DbSet<Course>              Courses             { get; set; }
         public DbSet<Profession>          Professions         { get; set; }
-        public DbSet<CourseTaken>       LeveledSkill        { get; set; }
-        public DbSet<CourseTaken>       LeveledCourses      { get; set; }
+        public DbSet<CourseTaken>         LeveledSkill        { get; set; }
+        public DbSet<CourseTaken>         LeveledCourses      { get; set; }
         public DbSet<User>                User                { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

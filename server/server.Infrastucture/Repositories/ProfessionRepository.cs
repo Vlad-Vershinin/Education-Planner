@@ -20,21 +20,21 @@ namespace server.Infrastucture.Repositories
         {
             return _context.Professions.ToList();
         }
-        public async Task<Profession> GetProfession(int id)
+        public async Task<Profession> GetProfessionById(int id)
         {
             return _context.Professions.ElementAt(id);
         }
         public async Task<List<Course>> GetProfessionCourses()
         {
-            return _context.Courses.Include(x => x.Professions).ToList();
+            return await _context.Courses.Include(x => x.Professions).ToListAsync();
         }
         public async Task<List<Skill>> GetProfessionSkills()
         {
-            return _context.Skills.Include(x => x.Profession).ToList();
+            return await _context.Skills.Include(x => x.Profession).ToListAsync();
         }
         public async Task<List<Profession>> GetSkillProfessions()
         {
-            return _context.Professions.Include(x => x.Skills).ToList(); 
+            return await _context.Professions.Include(x => x.Skills).ToListAsync(); 
         }
     }
 }

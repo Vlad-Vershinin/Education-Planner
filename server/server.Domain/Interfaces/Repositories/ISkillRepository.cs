@@ -11,7 +11,7 @@ namespace server.Domain.Interfaces.Repositories
     {
         Task<List<Skill>> GetAllSkills();
         Task<List<Skill>> GetSkillsByParent(int id);
-        Task<Skill> GetSkill(int id);
+        Task<Skill> GetSkillById(int id);
         Task<List<Course>> GetSkillCourses();
         Task<List<Profession>> GetSkillProfessions();
     }

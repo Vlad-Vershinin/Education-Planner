@@ -23,17 +23,17 @@ namespace server.Infrastucture.Repositories
         {
             return  _context.Skills.Where(x => x.ParentId == id).ToList();
         }
-        public async Task<Skill> GetSkill(int id)
+        public async Task<Skill> GetSkillById(int id)
         {
             return _context.Skills.ElementAt(id);
         }
         public async Task<List<Course>> GetSkillCourses()
         {
-            return _context.Courses.Include(x => x.Skills).ToList();
+            return await _context.Courses.Include(x => x.Skills).ToListAsync();
         }
         public async Task<List<Profession>> GetSkillProfessions()
         {
-            return _context.Professions.Include(x => x.Skills).ToList();
+            return await _context.Professions.Include(x => x.Skills).ToListAsync();
         }
     }
 }

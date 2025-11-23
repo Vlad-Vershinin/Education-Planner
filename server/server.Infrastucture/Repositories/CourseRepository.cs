@@ -1,4 +1,5 @@
-﻿using server.Domain.Interfaces.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using server.Domain.Interfaces.Repositories;
 using server.Domain.Models;
 using server.Persistence;
 using server.Persistence.Configurations;
@@ -19,17 +20,17 @@ namespace server.Infrastucture.Repositories
         {
             return _context.Courses.ToList();
         }
-        public async Task<Course> GetCourse(int id)
+        public async Task<Course> GetCourseById(int id)
         {
             return _context.Courses.ElementAt(id);
         }
-        public async Task<List<Profession>> GetCourseProfessions(int id)
+        public async Task<List<Profession>> GetCourseProfessions()
         {
-            return _context.Courses.ElementAt(id).Professions;
+            return await _context.Professions.Include(x => x.Courses).ToListAsync();
         }
-        public async Task<List<LeveledSkill>> GetCourseSkills(int id)
+        public async Task<List<CourseTaken>> GetCourseSkills()
         {
-            return _context.Courses.ElementAt(id).Skills;
+            return await _context.LeveledSkill.Include(x => x.Course).ToListAsync();
         }
     }
 }
