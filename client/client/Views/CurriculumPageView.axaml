@@ -57,7 +57,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Title}" Width="auto" Header="Название курса"/>
                             <DataGridTextColumn Binding="{Binding Description}" Width="1.5*" Header="Описание курса"/>
-                            <DataGridTemplateColumn Width="auto" Header="Включить курс">
+                            <DataGridTemplateColumn Width="auto" Header="Включить курс" IsVisible="False">
                                 <DataTemplate>
 							        <Button HorizontalAlignment="Stretch" Content="Включить"></Button>
                                 </DataTemplate>

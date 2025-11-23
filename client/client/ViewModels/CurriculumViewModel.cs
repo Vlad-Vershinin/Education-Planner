@@ -16,8 +16,10 @@ namespace client.ViewModels
         [Reactive] public Course CourseSelected {  get; set; } = new Course();
 
 
+        public bool isCourseIsAvailable { get; set; } = true;
 
         public ReactiveCommand<Unit, Unit> GoToPreviousPage_Click { get; set; }
+        public ReactiveCommand<Unit, Unit> AddCourseToTheLearning_Click { get; set; }
 
         public delegate void BackToThePreviousDelegate();
         private BackToThePreviousDelegate _backToThePrevious;
@@ -40,6 +42,15 @@ namespace client.ViewModels
             if (_backToThePrevious != null)
             {
                 _backToThePrevious.Invoke();
+            }
+        }
+        public async Task AddCourseToTheLearning()
+        {
+
+            if (AppUserService.CurrentUser.EnrolledCourses.Where(x => x.Id == CourseSelected.Id).Count() == 0)
+            {
+                AppUserService.CurrentUser.EnrolledCourses.Add(CourseSelected);
+                isCourseIsAvailable = false;
             }
         }
     }

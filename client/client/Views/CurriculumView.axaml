@@ -104,7 +104,7 @@
                     </StackPanel>
                 </ScrollViewer>
 
-                <Button Content="¬ключить курс" Grid.Row="1" Grid.Column="1"></Button>
+                <Button Content="¬ключить курс" Grid.Row="1" Grid.Column="1" IsEnabled="{Binding isCourseIsAvailable}"></Button>
             </Grid>
         </Border>
     </Grid>
