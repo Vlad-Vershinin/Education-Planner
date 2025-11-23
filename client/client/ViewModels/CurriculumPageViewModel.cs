@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls;
 using client.Models;
 using client.Models.Enum;
+using client.Services;
 using client.Views;
 using DynamicData.Binding;
 using ReactiveUI;
@@ -31,9 +32,13 @@ namespace client.ViewModels
 
 
 
-        public ObservableCollection<Course> Courses { get; set;} 
-        public CurriculumPageViewModel() 
+        public ObservableCollection<Course> Courses { get; set;}
+
+        UserService AppUserService;
+
+        public CurriculumPageViewModel(UserService appUserService) 
         {
+            AppUserService = appUserService;
             Courses = new ObservableCollection<Course> {
 
             new Course{Title = "Титле"}

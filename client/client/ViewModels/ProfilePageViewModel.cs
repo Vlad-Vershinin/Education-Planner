@@ -33,10 +33,11 @@ namespace client.ViewModels
 
         public ReactiveCommand<Unit, Unit> ViewTheCourse_Click { get; set; }
 
-
-        public ProfilePageViewModel()
+        UserService AppUserService;
+        public ProfilePageViewModel(UserService appUserService)
         {
-            CurrentUser = new User();
+            AppUserService = appUserService;
+            CurrentUser = appUserService.CurrentUser;
             //EnrolledCourses = CurrentUser.EnrolledCourses;
             EnrolledCourses = new List<Course>
             {

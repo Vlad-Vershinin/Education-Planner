@@ -1,6 +1,7 @@
 ﻿
 using Avalonia.Controls;
 using client.Models;
+using client.Services;
 using client.Views;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -26,12 +27,19 @@ public class MainViewModel : ViewModelBase
     public IndividualCurriculumPageView IndividualCurriculumPage { get; set; }
     public RegistrationPageView RegistrationPage { get; set; }
 
-    public MainViewModel() 
+
+
+
+    public UserService AppUserService { get; private set; }
+
+    public MainViewModel(UserService userService) 
     {
-        ProfilePage = new ProfilePageView();
-        FrameSelected = new ProfilePageView();
-        CurriculumPage = new CurriculumPageView();
-        IndividualCurriculumPage = new IndividualCurriculumPageView();
+        AppUserService = userService;
+
+
+        ProfilePage = new ProfilePageView(AppUserService);
+        CurriculumPage = new CurriculumPageView(AppUserService);
+        IndividualCurriculumPage = new IndividualCurriculumPageView(AppUserService);
         RegistrationPage = new RegistrationPageView();
 
 
@@ -40,6 +48,8 @@ public class MainViewModel : ViewModelBase
         SwitchToCurriculumPage = ReactiveCommand.CreateFromTask(switchToCurriculum);
         SwitchToIndividualCurriculumPage = ReactiveCommand.CreateFromTask(switchToIndividualCurriculum);
         SwitchToRegistratioPage = ReactiveCommand.CreateFromTask(SwitchToRegistr);
+
+        switchProfilePage();
     }
 
 

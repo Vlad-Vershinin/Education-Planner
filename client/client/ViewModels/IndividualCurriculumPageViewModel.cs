@@ -1,4 +1,5 @@
 ﻿using client.Models;
+using client.Services;
 using client.Views;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -28,8 +29,13 @@ namespace client.ViewModels
         public ObservableCollection<Course> Courses { get; set; }
         public string SearchProfession { set; get; } = "";
 
-        public IndividualCurriculumPageViewModel()
+
+        UserService AppUserService;
+
+        public IndividualCurriculumPageViewModel(UserService appUserService)
         {
+
+            AppUserService = appUserService;
             Courses = new ObservableCollection<Course> {
 
             new Course{Title = "Титле"}

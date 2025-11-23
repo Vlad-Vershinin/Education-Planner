@@ -13,7 +13,7 @@
     
 
     
-    <views:MainView/>
+    <views:LoginPageView/>
     
     
 </Window>
