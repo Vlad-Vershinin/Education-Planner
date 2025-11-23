@@ -15,9 +15,10 @@ namespace server.Domain.Models
         public int Y { get; set; }
         public int Z { get; set; }
         public int ParentId { get; set; }
+
         public List<Skill> Children { get; set; }
         public List<Profession> Profession { get; set; }
-        public List<Course> Courses { get; set; }
+        public List<LeveledSkill> LeveledSkills { get; set; }
 
         public Skill() { }
 

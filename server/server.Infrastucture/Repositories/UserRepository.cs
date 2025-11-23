@@ -3,6 +3,11 @@ using server.Persistence;
 using server.Domain.Models;
 
 using server.Domain.Interfaces.Repositories;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
+using System.Linq;
+using server.Domain.DTOs;
 
 
 namespace server.Infrastucture.Repositories
@@ -72,6 +77,20 @@ namespace server.Infrastucture.Repositories
             _context.User.FindAsync(user_id).Result.CoursesTaken.ElementAt(course_id).Progress = progress;
         }
 
+        public Task<User> GetUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateUserSkills(int user_id, List<LeveledSkillDto> skills)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateUserProfession(int user_id, int profession_id)
+        {
+            throw new NotImplementedException();
+        }
     }
     
 }

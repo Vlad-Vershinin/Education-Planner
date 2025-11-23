@@ -4,6 +4,9 @@ using server.Domain.Interfaces.Repositories;
 using server.Application.Services;
 using server.Infrastucture.Repositories;
 
+using Microsoft.EntityFrameworkCore;
+using server.Persistence;
+
 namespace server.API
 {
     public class Program
@@ -19,10 +22,17 @@ namespace server.API
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
             builder.Services.AddTransient<ICourseService, CourseService>();
 
+            builder.Services.AddControllers();
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
             var app = builder.Build();
 
-            app.Run();
+            app.UseRouting();
+            app.MapControllers();
 
+            app.Run();
         }
     }
 }

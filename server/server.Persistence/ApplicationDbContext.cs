@@ -13,7 +13,7 @@ namespace server.Persistence
         public DbSet<Skill>               Skills              { get; set; }
         public DbSet<Course>              Courses             { get; set; }
         public DbSet<Profession>          Professions         { get; set; }
-        public DbSet<LeveledSkill>        LeveledSkill        { get; set; }
+        public DbSet<LeveledCourse>        LeveledSkill        { get; set; }
         public DbSet<LeveledCourse>       LeveledCourses      { get; set; }
         public DbSet<User>                User                { get; set; }
 
@@ -22,6 +22,9 @@ namespace server.Persistence
             modelBuilder.ApplyConfiguration(new SkillsConfiguration());
             modelBuilder.ApplyConfiguration(new CoursesConfiguration());
             modelBuilder.ApplyConfiguration(new ProfessionsConfiguration());
+            modelBuilder.ApplyConfiguration(new LeveledSkillConfiguration());
+            modelBuilder.ApplyConfiguration(new UsersConfiguration());
+            modelBuilder.ApplyConfiguration(new CourseTakenConfiguration());
       
             
 

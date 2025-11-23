@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using server.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace server.Persistence.Configurations
 {
@@ -13,7 +8,13 @@ namespace server.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.
+            builder.HasKey(x => x.Id);
+
+            builder
+                .HasMany(ct => ct.CoursesTaken);
+
+            builder
+                .HasMany(s => s.SkillsHave);
         }
     }
 }

@@ -8,22 +8,15 @@ namespace server.Persistence.Configurations{
     {
         public void Configure(EntityTypeBuilder<Skill> builder)
         {
-
             builder.HasKey(x => x.Id);
-
 
             builder
                 .HasMany(s => s.Profession)
                 .WithMany(p => p.Skills);
 
-
             builder
-                .HasMany(s => s.Courses)
-                .WithMany(c => c.Skills);
-
-
-
-
+                .HasMany(s => s.Profession)
+                .WithMany(p => p.Skills);
         }
     }
 }

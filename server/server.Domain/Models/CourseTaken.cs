@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace server.Domain.Models
 {
-    // Курсы, которые пользователь проходит или уже прошёл
     public class CourseTaken
     {
+        public Guid UserId { get; set; }
+        public Guid CourseId { get; set; }
+
         public Course Course { get; set; }
         public double Progress { get; set; } // [0; 1]
 
