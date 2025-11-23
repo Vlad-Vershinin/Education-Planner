@@ -1,4 +1,5 @@
-﻿using client.Models;
+﻿using Avalonia.Controls.Mixins;
+using client.Models;
 using client.Services;
 using client.Views;
 using ReactiveUI;
@@ -25,6 +26,7 @@ namespace client.ViewModels
 
         public ReactiveCommand<Unit, Unit> GoToPreviousPage_Click { get; set; }
         public ReactiveCommand<Unit, Unit> ShowSuggestedCourses_Click { get; set; }
+        public ReactiveCommand<Unit, Unit> SetProfession_Click { get; set; }
 
         public delegate void BackToThePreviousDelegate();
         private BackToThePreviousDelegate _backToThePrevious;
@@ -35,6 +37,7 @@ namespace client.ViewModels
             AppUserService = userService;
             GoToPreviousPage_Click = ReactiveCommand.CreateFromTask(GoToPreviousPage);
             ShowSuggestedCourses_Click = ReactiveCommand.CreateFromTask(ShowSuggestedCourses);
+            SetProfession_Click = ReactiveCommand.CreateFromTask(SetProfession);
         }
 
         public void SetDelegate(BackToThePreviousDelegate backToThePreviousDelegate)
@@ -59,6 +62,13 @@ namespace client.ViewModels
                 new Course{Title = "dddd"},
             };
             IsViewingProfession = true;
+        }
+
+
+        public async Task SetProfession()
+        {
+            AppUserService.CurrentUser.profession = Profession;
+            //ProfessionViewModel professionViewModel = new ProfessionViewModel();
         }
         public void ReturnToThisPage()
         {

@@ -18,8 +18,8 @@ namespace client.ViewModels
 
         [Reactive] public bool IsViewingTheCourse { get; set; } = false;
 
-        public CurriculumView SelectedCoursePage { get; set; }
-        public int SelectedCourseID { get; set; }
+        [Reactive]  public CurriculumView SelectedCoursePage { get; set; }
+        [Reactive]  public int SelectedCourseID { get; set; }
 
 
         public ReactiveCommand<Unit,Unit> LogOut_Click { get; set; }
@@ -43,7 +43,7 @@ namespace client.ViewModels
 
         public ReactiveCommand<Unit, Unit> ViewTheCourse_Click { get; set; }
 
-        UserService AppUserService;
+        [Reactive] UserService AppUserService { get; set; }
         public ProfilePageViewModel(UserService appUserService)
         {
             AppUserService = appUserService;

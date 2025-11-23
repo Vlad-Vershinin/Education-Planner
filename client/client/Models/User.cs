@@ -16,5 +16,6 @@ namespace client.Models
         public List<Course> EnrolledCourses { get; set; } = new List<Course>();
         public string Login { get; set; }
         public Course CurrentCourse { get; set; } // Ярик добавил.
+        public Profession profession { get; set; }
     }
 }

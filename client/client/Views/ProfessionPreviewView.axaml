@@ -59,7 +59,8 @@
                     </ListBox>
                 </StackPanel>
 				
-                <Button Content="Подобрать курсы" Grid.Row="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding ShowSuggestedCourses_Click}"></Button>
+                <Button Content="Подобрать курсы" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding ShowSuggestedCourses_Click}"></Button>
+                <Button Content="Установить профессию" Grid.Row="1" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding SetProfession_Click}"></Button>
             </Grid>
         </Border>
     </Grid>
